@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 @endif
-       <!-- asdas -->
+       <!-- asdas -->sas
 
                 <div class="form-group">
                     <label for="">Açıklama</label>
