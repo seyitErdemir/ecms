@@ -1,0 +1,4 @@
+.sortable{
+    cursor: -webkit-grab;
+    cursor: grab;
+}
