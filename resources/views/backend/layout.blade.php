@@ -270,6 +270,12 @@ desired effect
 
 
     @endif
+
+    @foreach ($errors->all() as $error)
+    <script>
+        alertify.error('{{$error}}');
+    </script>
+    @endforeach
 </body>
 
 </html>

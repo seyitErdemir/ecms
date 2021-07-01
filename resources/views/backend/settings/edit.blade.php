@@ -10,7 +10,9 @@
             </h3>
         </div>
         <div class="box-body">
-            <form action="" method="post" enctype="multipart/form-data">
+
+            <form action="{{route('settings.Update',['id'=>$settings['id']])}}" method="post"
+                enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="">Açıklama</label>
@@ -26,13 +28,13 @@
                     <label for="">Resim Seç</label>
                     <div class="row">
                         <div class="col-xs-12">
-                            <input type="file" class="form-control">
+                            <input type="file" class="form-control" name="settings_value">
 
                         </div>
                     </div>
                 </div>
                 @endif
-       <!-- asdas -->sas
+
 
                 <div class="form-group">
                     <label for="">Açıklama</label>
@@ -47,6 +49,10 @@
                                 required>{{$settings->settings_value}}</textarea>
                             @endif
 
+                            @if($settings->settings_type=="file")
+                            <img width="100px" src="/images/settings/{{$settings->settings_value}}" alt="">
+                            @endif
+
                             @if($settings->settings_type=="ckeditor")
                             <textarea class="form-control" id="editor1" name="settings_value" rows="5"
                                 required>{{$settings->settings_value}}</textarea>
@@ -56,8 +62,10 @@
                             </script>
                         </div>
                     </div>
-
-                    <div align="right" class="box-footer" >
+                    @if($settings->settings_type=="file")
+                        <input type="hidden" name="old_file" value="{{$settings->settings_value}}">
+                    @endif
+                    <div align="right" class="box-footer">
                         <button class="btn btn-success" type="submit">Düzenle</button>
                     </div>
                 </div>

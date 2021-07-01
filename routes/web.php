@@ -18,8 +18,15 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('nedmin','Backend\DefaultController@index')->name('nedmin.Index');
-Route::get('nedmin/settings','Backend\SettingsController@index')->name('settings.Index');
-Route::post('nedmin/sortable','Backend\SettingsController@sortable')->name('settings.Sortable');
-Route::get('nedmin/settings/delete/{id}','Backend\SettingsController@destroy');
-Route::get('nedmin/settings/edit/{id}','Backend\SettingsController@edit')->name('settings.Edit');
 
+Route::namespace('Backend')->group(function(){
+    Route::prefix('nedmin')->group(function(){
+        Route::get('settings','SettingsController@index')->name('settings.Index');
+        Route::post('sortable','SettingsController@sortable')->name('settings.Sortable');
+        Route::get('settings/delete/{id}','SettingsController@destroy');
+        Route::get('settings/edit/{id}','SettingsController@edit')->name('settings.Edit');
+        Route::post('update/{id}','SettingsController@update')->name('settings.Update');
+
+
+    });
+});
