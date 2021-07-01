@@ -20,13 +20,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('nedmin','Backend\DefaultController@index')->name('nedmin.Index');
 
 Route::namespace('Backend')->group(function(){
-    Route::prefix('nedmin')->group(function(){
-        Route::get('settings','SettingsController@index')->name('settings.Index');
-        Route::post('sortable','SettingsController@sortable')->name('settings.Sortable');
-        Route::get('settings/delete/{id}','SettingsController@destroy');
-        Route::get('settings/edit/{id}','SettingsController@edit')->name('settings.Edit');
-        Route::post('update/{id}','SettingsController@update')->name('settings.Update');
+    Route::prefix('nedmin/settings')->group(function(){
+        Route::get('/','SettingsController@index')->name('settings.Index');
+        Route::post('','SettingsController@sortable')->name('settings.Sortable');
+        Route::get('/delete/{id}','SettingsController@destroy');
+        Route::get('/edit/{id}','SettingsController@edit')->name('settings.Edit');
+        Route::post('/{id}','SettingsController@update')->name('settings.Update');
 
+
+    });
+});
+
+
+
+ 
+Route::namespace('Backend')->group(function(){
+    Route::prefix('nedmin')->group(function(){
+        Route::post('sortable','BlogController@sortable')->name('blog.Sortable');
+
+        Route::resource('blog','BlogController');
 
     });
 });

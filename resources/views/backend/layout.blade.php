@@ -131,7 +131,7 @@ desired effect
                                     <img src="/backend/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                     <p>
-                                    Seyit Erdemir - Web Developer
+                                        Seyit Erdemir - Web Developer
                                         <small>Member since Nov. 2012</small>
                                     </p>
                                 </li>
@@ -190,8 +190,12 @@ desired effect
                     <!-- Optionally, you can add icons to the links -->
                     <li class="active"><a href="{{route('nedmin.Index')}}"><i class="fa fa-link"></i>
                             <span>Dashboard</span></a></li>
+
                     <li class="active"><a href="{{route('settings.Index')}}"><i class="fa fa-cog"></i>
                             <span>Ayarlar</span></a></li>
+                    <li class="active"><a href="{{route('blog.index')}}"><i class="fa fa-cog"></i>
+                            <span>Blogs</span></a></li>
+
 
                     <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> -->
 
@@ -273,7 +277,7 @@ desired effect
 
     @foreach ($errors->all() as $error)
     <script>
-        alertify.error('{{$error}}');
+    alertify.error('{{$error}}');
     </script>
     @endforeach
 </body>

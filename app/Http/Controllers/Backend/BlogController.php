@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blogs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use function GuzzleHttp\Promise\all;
 
 class BlogController extends Controller
 {
@@ -14,7 +17,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $data['blog']=Blogs::all()->sortBy('blog_must');
+         
+        return view('backend.blogs.index',compact('data'));
     }
 
     /**
@@ -24,7 +29,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+         return view('backend.blogs.create');
     }
 
     /**
@@ -35,7 +40,48 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (strlen($request->blog_slug>3)) {
+             $slug=Str::slug($request->blog_slug);
+        }else{
+            $slug=Str::slug($request->blog_title);
+
+
+        }
+
+
+        if ($request->hasFile('blog_file')) {
+            $request->validate([
+                'blog_file'=>'required|image|mimes:jpg,jpeg,png|max:2048',
+                'blog_title'=>'required',
+                'blog_content'=>'required'
+           
+           
+            ]);
+
+            $file_name=uniqid().'.'.$request->blog_file->getClientOriginalExtension();
+            $request->blog_file->move(public_path('images/blogs'),$file_name);
+         
+        }else{
+            $file_name=null;
+        }
+        
+        
+       // $request->settings_value=$file_name;
+
+
+
+        $blog=Blogs::insert([
+            "blog_title"=>$request->blog_title,
+            "blog_slug"=>$slug,
+            "blog_file"=>$file_name,
+            "blog_content"=>$request->blog_content,
+            "blog_status"=>$request->blog_status,
+        ]);
+        if ($blog) {
+            return redirect(route('blog.index'))->with('success','İşlem Başarılı');
+        }
+        return back()->with('error','İşlem Başarısız');
+
     }
 
     /**
@@ -80,6 +126,19 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $blog= Blogs::find(intval($id));
+         if($blog->delete()){
+                echo 1;
+         }echo 0;
+    }   
+    public function sortable(){
+        //  print_r($_POST['item']);
+       foreach($_POST['item'] as $key=>$value){
+           $blogs=Blogs::find(intval($value));
+           $blogs->blog_must=intval($key);
+           $blogs->save();
+       }
+       echo true;
+       
+       }
 }
