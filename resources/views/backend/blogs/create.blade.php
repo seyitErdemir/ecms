@@ -6,7 +6,7 @@
     <div class="box box-primary">
         <div class="box-header with-border">
             <h3 class="box-title">
-                Blog Düzenleme
+                Blog Ekleme
             </h3>
         </div>
         <div class="box-body">
@@ -59,12 +59,12 @@
                         <label for="">Başlık</label>
                         <div class="row">
                             <div class="col-xs-12">
-                                <select name="blog_status" class="form-control"  >
+                                <select name="blog_status" class="form-control">
                                     <option value="1">Aktif</option>
                                     <option value="0">Pasif</option>
 
                                 </select>
-                                </div>
+                            </div>
                         </div>
                     </div>
                     <div align="right" class="box-footer">
