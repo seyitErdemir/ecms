@@ -136,9 +136,29 @@ class BlogController extends Controller
 
            $file_name=uniqid().'.'.$request->blog_file->getClientOriginalExtension();
            $request->blog_file->move(public_path('images/blogs'),$file_name);
-        
+
+           
+       $blog=Blogs::Where('id',$id)->update([
+        "blog_title"=>$request->blog_title,
+        "blog_slug"=>$slug,
+        "blog_file"=>$file_name,
+        "blog_content"=>$request->blog_content,
+        "blog_status"=>$request->blog_status,
+    ]);
+        $path='images/blogs/'.$request->old_file;
+        if (file_exists($path)) {
+            @unlink(public_path($path));
+        }
+
+
        }else{
-           $file_name=null;
+           
+       $blog=Blogs::Where('id',$id)->update([
+        "blog_title"=>$request->blog_title,
+        "blog_slug"=>$slug,
+        "blog_content"=>$request->blog_content,
+        "blog_status"=>$request->blog_status,
+    ]);
        }
        
        
@@ -146,13 +166,6 @@ class BlogController extends Controller
 
 
 
-       $blog=Blogs::Where('id',$id)->update([
-           "blog_title"=>$request->blog_title,
-           "blog_slug"=>$slug,
-           "blog_file"=>$file_name,
-           "blog_content"=>$request->blog_content,
-           "blog_status"=>$request->blog_status,
-       ]);
        if ($blog) {
            return redirect(route('blog.index'))->with('success','İşlem Başarılı');
        }

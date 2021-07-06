@@ -33,7 +33,7 @@
 
 
 
-                        <td width="5"><a href="{{route('blog.edit',$blog['id'])}}"><i
+                        <td width="5"><a href="{{route('blog.edit',$blog->id)}}"><i
                                     class="fa fa-pencil-square"></i></a></td>
 
                         <td width="5"><a href="javascript:void(0)"><i id="@php echo $blog->id @endphp"

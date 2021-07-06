@@ -10,8 +10,11 @@
             </h3>
         </div>
         <div class="box-body">
-            <form action="{{route('blog.update',['id'=>$blog['id']])}}" method="post" enctype="multipart/form-data">
+            
+       
+            <form action="{{route('blog.update',$blogs->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 @isset($blogs->blog_file)
                 <div class="form-group">
                     <label for="">Yüklü Resim</label>
@@ -46,7 +49,7 @@
                     <label for="">Slug</label>
                     <div class="row">
                         <div class="col-xs-12">
-                            <input type="text" name="blog_slug" class="form-control" value="{{$blogs->blog_slug}}>
+                            <input type="text" name="blog_slug" class="form-control" value="{{$blogs->blog_slug}}">
                         </div>
                     </div>
                 </div>
