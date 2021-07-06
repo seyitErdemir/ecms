@@ -195,7 +195,9 @@ desired effect
                             <span>Blogs</span></a></li>
                     <li class="active"><a href="{{route('page.index')}}"><i class="fa fa-cog"></i>
                             <span>Pages</span></a></li>
-                            
+                    <li class="active"><a href="{{route('slider.index')}}"><i class="fa fa-cog"></i>
+                            <span>Slider</span></a></li>
+
                     <li class="active"><a href="{{route('settings.Index')}}"><i class="fa fa-cog"></i>
                             <span>Ayarlar</span></a></li>
 
