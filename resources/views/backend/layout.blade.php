@@ -191,10 +191,13 @@ desired effect
                     <li class="active"><a href="{{route('nedmin.Index')}}"><i class="fa fa-link"></i>
                             <span>Dashboard</span></a></li>
 
+                    <li class="active"><a href="{{route('blog.index')}}"><i class="fa fa-paper-plane"></i>
+                            <span>Blogs</span></a></li>
+                    <li class="active"><a href="{{route('page.index')}}"><i class="fa fa-cog"></i>
+                            <span>Pages</span></a></li>
+                            
                     <li class="active"><a href="{{route('settings.Index')}}"><i class="fa fa-cog"></i>
                             <span>Ayarlar</span></a></li>
-                    <li class="active"><a href="{{route('blog.index')}}"><i class="fa fa-cog"></i>
-                            <span>Blogs</span></a></li>
 
 
                     <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> -->
