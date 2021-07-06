@@ -156,7 +156,7 @@ class BlogController extends Controller
        if ($blog) {
            return redirect(route('blog.index'))->with('success','İşlem Başarılı');
        }
-       return back()->with('error','İşlem Başarısız');
+       return back()->with('error','İşlem Başarısız...');
     }
 
     /**
