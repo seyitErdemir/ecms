@@ -42,8 +42,14 @@ Route::namespace('Backend')->group(function(){
         //page
         Route::post('/page/sortable','PageController@sortable')->name('page.Sortable');
         Route::resource('page','PageController');
-           //slider
-           Route::post('/slider/sortable','SliderController@sortable')->name('slider.Sortable');
-           Route::resource('slider','SliderController');
+         //slider
+         Route::post('/slider/sortable','SliderController@sortable')->name('slider.Sortable');
+        Route::resource('slider','SliderController');
+        
+           //admin
+           Route::post('/user/sortable','UserController@sortable')->name('user.Sortable');
+           Route::resource('user','UserController');
+   
+   
     });
 });
