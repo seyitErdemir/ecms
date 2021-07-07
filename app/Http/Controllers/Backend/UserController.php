@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use function GuzzleHttp\Promise\all;
-
 class UserController extends Controller
 {
     /**
@@ -41,20 +41,13 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_title'=>'required',
-            'user_content'=>'required',
-            'user_url'=>'active_url'
+            'name'=>'required',
+            'email'=>'required|email',
+            'password'=>'required|Min:6'
        
        
         ]);
-        if (strlen($request->user_slug>3)) {
-             $slug=Str::slug($request->user_slug);
-        }else{
-            $slug=Str::slug($request->user_title);
-
-
-        }
-
+         
 
         if ($request->hasFile('user_file')) {
             $request->validate([
@@ -77,11 +70,10 @@ class UserController extends Controller
 
 
         $user=User::insert([
-            "user_title"=>$request->user_title,
-            "user_slug"=>$slug,
+            "name"=>$request->name,
+            "email"=>$request->email,
             "user_file"=>$file_name,
-            "user_url"=>$request->user_url,
-            "user_content"=>$request->user_content,
+            "password"=>Hash::make($request->password),
             "user_status"=>$request->user_status,
         ]);
         if ($user) {
