@@ -197,26 +197,24 @@ desired effect
                             <span>Pages</span></a></li>
                     <li class="active"><a href="{{route('slider.index')}}"><i class="fa fa-cog"></i>
                             <span>Slider</span></a></li>
-                    <li class="active"><a href="{{route('user.index')}}"><i class="fa fa-user"></i>
-                            <span>User</span></a></li>
-
-                    <li class="active"><a href="{{route('settings.Index')}}"><i class="fa fa-cog"></i>
-                            <span>Ayarlar</span></a></li>
 
 
-                    <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> -->
 
-                    <!-- <li class="treeview">
-                        <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+
+                    <li class="treeview active ">
+                        <a href="#"><i class="fa fa-link"></i> <span>Yönetim</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#">Link in level 2</a></li>
-                            <li><a href="#">Link in level 2</a></li>
+                            <li class="active"><a href="{{route('user.index')}}"><i class="fa fa-user"></i>
+                                    <span>Yönetici</span></a></li>
+
+                            <li class="active"><a href="{{route('settings.Index')}}"><i class="fa fa-cog"></i>
+                                    <span>Ayarlar</span></a></li>
                         </ul>
-                    </li> -->
+                    </li>
 
 
                 </ul>

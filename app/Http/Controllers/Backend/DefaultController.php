@@ -11,4 +11,8 @@ class DefaultController extends Controller
         return view('backend.default.index');
 
     }
+    public function login(){
+
+        return view('backend.default.login');
+    }
 }

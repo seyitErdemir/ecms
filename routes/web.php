@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,13 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('nedmin','Backend\DefaultController@index')->name('nedmin.Index');
 
 Route::namespace('Backend')->group(function(){
+
+    Route::prefix('nedmin')->group(function(){
+        Route::get('/','DefaultController@index')->name('nedmin.Index');
+        Route::get('/login','DefaultController@login')->name('nedmin.Login');
+
+    });
+
+
     Route::prefix('nedmin/settings')->group(function(){
         Route::get('/','SettingsController@index')->name('settings.Index');
         Route::post('','SettingsController@sortable')->name('settings.Sortable');
@@ -53,3 +61,6 @@ Route::namespace('Backend')->group(function(){
    
     });
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

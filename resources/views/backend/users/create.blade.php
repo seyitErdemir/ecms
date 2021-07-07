@@ -24,10 +24,10 @@
 
 
                 <div class="form-group">
-                    <label for="">Ad Soyad</label>
+                    <label for=""> Kullanıcı Adı (Email)</label>
                     <div class="row">
                         <div class="col-xs-12">
-                            <input type="text" name="name" class="form-control">
+                            <input type="email" name="name" class="form-control">
                         </div>
                     </div>
                 </div>

@@ -118,19 +118,13 @@ class UserController extends Controller
 
 
         $request->validate([
-            'user_title'=>'required',
-            'user_content'=>'required',
-            'user_url'=>'active_url'
+            'name'=>'required',
+            'email'=>'required|email',
+       
        
         ]);
         
-        if (strlen($request->user_slug>3)) {
-            $slug=Str::slug($request->user_slug);
-       }else{
-           $slug=Str::slug($request->user_title);
-
-
-       }
+       
 
 
        if ($request->hasFile('user_file')) {
@@ -144,14 +138,32 @@ class UserController extends Controller
            $request->user_file->move(public_path('images/users'),$file_name);
 
            
-       $user=User::Where('id',$id)->update([
-        "user_title"=>$request->user_title,
-        "user_slug"=>$slug,
-        "user_file"=>$file_name,
-        "user_url"=>$request->user_url,
-        "user_content"=>$request->user_content,
-        "user_status"=>$request->user_status,
-    ]);
+            if (strlen($request->password>0)) {
+                $request->validate([
+
+                    'password'=>'required|Min:6'
+                ]);
+
+                dd($request->password);
+                $user=User::Where('id',$id)->update([
+                    "name"=>$request->name,
+                    "email"=>$request->email,
+                    "user_file"=>$file_name,
+                    "password"=>Hash::make($request->password),
+                    "user_status"=>$request->user_status,
+                ]);
+            }else{
+                $user=User::Where('id',$id)->update([
+                    "name"=>$request->name,
+                    "email"=>$request->email,
+                    "user_file"=>$file_name,
+                    "user_status"=>$request->user_status,
+                ]);
+
+            }
+
+
+
         $path='images/users/'.$request->old_file;
         if (file_exists($path)) {
             @unlink(public_path($path));
@@ -159,14 +171,31 @@ class UserController extends Controller
 
 
        }else{
-           
-       $user=User::Where('id',$id)->update([
-        "user_title"=>$request->user_title,
-        "user_slug"=>$slug,
-        "user_url"=>$request->user_url,
-        "user_content"=>$request->user_content,
-        "user_status"=>$request->user_status,
-    ]);
+
+        
+  
+        if (strlen($request->password>0)) {
+            $request->validate([
+
+                'password'=>'required|Min:6'
+            ]);
+
+            $user=User::Where('id',$id)->update([
+                "name"=>$request->name,
+                "email"=>$request->email,
+                "password"=>Hash::make($request->password),
+                "user_status"=>$request->user_status,
+            ]);
+        }else{
+            $user=User::Where('id',$id)->update([
+                "name"=>$request->name,
+                "email"=>$request->email,
+                "user_status"=>$request->user_status,
+            ]);
+
+        }
+
+     
        }
        
        
