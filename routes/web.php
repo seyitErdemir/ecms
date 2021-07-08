@@ -14,9 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::namespace('Frontend')->group(function(){
+    Route::get('/','DefaultController@index')->name('home.Index');
+
+    
 });
+
+
+
 
 
 Route::namespace('Backend')->group(function(){
