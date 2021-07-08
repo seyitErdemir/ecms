@@ -24,6 +24,7 @@ Route::namespace('Backend')->group(function(){
     Route::prefix('nedmin')->group(function(){
         Route::get('/','DefaultController@index')->name('nedmin.Index');
         Route::get('/login','DefaultController@login')->name('nedmin.Login');
+        Route::post('/login','DefaultController@authenticate')->name('nedmin.Authenticate');
 
     });
 
