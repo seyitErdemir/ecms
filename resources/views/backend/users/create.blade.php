@@ -24,19 +24,19 @@
 
 
                 <div class="form-group">
-                    <label for=""> Kullanıcı Adı (Email)</label>
+                    <label for=""> Kullanıcı Adı </label>
                     <div class="row">
                         <div class="col-xs-12">
-                            <input type="email" name="name" class="form-control">
+                            <input type="text" name="name" class="form-control">
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="">Kullanıcı Adı</label>
+                    <label for="">Kullanıcı Adı (Email)</label>
                     <div class="row">
                         <div class="col-xs-12">
-                            <input type="text" name="email" class="form-control">
+                            <input type="email" name="email" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -66,8 +66,15 @@
                             </div>
                         </div>
                     </div>
-                    <div align="right" class="box-footer">
-                        <button class="btn btn-success" type="submit">Ekle</button>
+ 
+                    
+
+                    
+                    
+                    <div align="right" class=" box-footer">
+                    
+                        <a   href="{{route('nedmin.Index')}}" class="btn btn-primary">Dashboard</a>
+                        <button  class="btn btn-success" type="submit">Ekle</button>
                     </div>
                 </div>
 

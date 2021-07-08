@@ -10,8 +10,8 @@
             </h3>
         </div>
         <div class="box-body">
-            
-       
+
+
             <form action="{{route('page.update',$pages->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -20,7 +20,7 @@
                     <label for="">Yüklü Resim</label>
                     <div class="row">
                         <div class="col-xs-12">
-                                <img width="100" src="/images/pages/{{$pages->page_file}}" alt="">
+                            <img width="100" src="/images/pages/{{$pages->page_file}}" alt="">
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <label for="">Resim Seç</label>
                     <div class="row">
                         <div class="col-xs-12">
-                            <input type="file"   class="form-control" name="page_file">
+                            <input type="file" class="form-control" name="page_file">
 
                         </div>
                     </div>
@@ -73,18 +73,20 @@
                         <label for="">Başlık</label>
                         <div class="row">
                             <div class="col-xs-12">
-                                <select name="page_status" class="form-control"  >
+                                <select name="page_status" class="form-control">
                                     <option {{$pages->page_status=="1" ? "selected=''":""}} value="1">Aktif</option>
                                     <option {{$pages->page_status=="0" ? "selected=''":""}} value="0">Pasif</option>
 
                                 </select>
-                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <input type="hidden" name="old_file" value="{{$pages->page_file}}">
 
                     <div align="right" class="box-footer">
+                        <a href="{{route('nedmin.Index')}}" class="btn btn-primary">Dashboard</a>
+
                         <button class="btn btn-success" type="submit">Düzenle</button>
                     </div>
                 </div>

@@ -77,6 +77,8 @@
                         </div>
                     </div>
                     <div align="right" class="box-footer">
+                        <a href="{{route('nedmin.Index')}}" class="btn btn-primary">Dashboard</a>
+
                         <button class="btn btn-success" type="submit">Ekle</button>
                     </div>
                 </div>

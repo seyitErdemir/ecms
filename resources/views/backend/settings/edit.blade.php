@@ -63,9 +63,11 @@
                         </div>
                     </div>
                     @if($settings->settings_type=="file")
-                        <input type="hidden" name="old_file" value="{{$settings->settings_value}}">
+                    <input type="hidden" name="old_file" value="{{$settings->settings_value}}">
                     @endif
                     <div align="right" class="box-footer">
+                        <a href="{{route('nedmin.Index')}}" class="btn btn-primary">Dashboard</a>
+
                         <button class="btn btn-success" type="submit">Düzenle</button>
                     </div>
                 </div>

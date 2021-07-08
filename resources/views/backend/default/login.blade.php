@@ -59,17 +59,21 @@
                 <div class="alert alert-danger">
                   {{session('error')}}
                 </div>
+                @elseif(Session::has('success'))
+                <div class="alert alert-success">
+                  {{session('success')}}
+                </div>
               
             @endif
 
             <form action="{{route('nedmin.Authenticate')}}" method="post">
                 @csrf
                 <div class="form-group has-feedback">
-                    <input type="email" class="form-control" name="email" value="{{old('email')}}" placeholder="Kullanıcı Adı">
+                    <input type="email" required class="form-control" name="email" value="{{old('email')}}" placeholder="Kullanıcı Adı">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" class="form-control"  name="password"  placeholder="Şifre">
+                    <input type="password" required class="form-control"  name="password"  placeholder="Şifre">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
