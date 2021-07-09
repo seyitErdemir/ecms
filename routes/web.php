@@ -20,8 +20,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('Frontend')->group(function(){
     Route::get('/','DefaultController@index')->name('home.Index');
+  
+  //blog
     Route::get('/blog','BlogController@index')->name('blog.Index');
     Route::get('/blog/{slug}','BlogController@detail')->name('blog.Detail');
+    //page
+    Route::get('/page/{slug}','PageController@detail')->name('page.Detail');
 
     
 });

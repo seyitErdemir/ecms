@@ -5,7 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="{{$description}}">
     <meta name="author" content="">
 
     <title>@yield('title')</title>
@@ -39,6 +39,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('blog.Index')}}">Blog</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/page/{{$slug}}">Sayfalar</a>
+                    </li>
                    
              
                 </ul>
@@ -50,7 +53,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+            <p class="m-0 text-center text-white">{{$footer}}</p>
         </div>
         <!-- /.container -->
     </footer>
