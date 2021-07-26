@@ -11,7 +11,7 @@
                </h3>
          </div>
          <div class="box-body">
-             <p>Dashboard page</p>
+             <p>Dashboard Page</p>
          </div>
      </div>
 </section>
