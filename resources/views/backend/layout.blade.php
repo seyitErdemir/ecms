@@ -1,53 +1,39 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html>
+<html lang="tr">
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>... Yazılım</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="/backend/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="/backend/bower_components/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="/backend/bower_components/Ionicons/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="/backend/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-        page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect. -->
-    <link rel="stylesheet" href="/backend/dist/css/skins/skin-blue.min.css">
+    <title>Merhaba Hoşgeldin</title>
 
-    <link rel="stylesheet" href="/backend/custom/css/custom.css">
+    <!-- Custom fonts for this template-->
+    <link href="/backend/panel/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/backend/panel/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/backend/panel/css/custom.css" rel="stylesheet">
 
 
-    <!-- alertify-->
-    <!-- jQuery 3 -->
-    <script src="/backend/bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="/backend/bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/backend/jquery/dist/jquery.min.js"></script>
 
-    <script src="/backend/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="/backend/dist/js/adminlte.min.js"></script>
 
-    <!-- JavaScript -->
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    <!-- alertify-->
+
+
 
 
     <!-- ckeditor -->
     <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
     <!-- ckeditor -->
 
-
-
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
@@ -59,219 +45,254 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
 
 
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-    <!-- Google Font -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        referrerpolicy="no-referrer" />
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
 
-<body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
+<body id="page-top">
 
-        <!-- Main Header -->
-        <header class="main-header">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-            <!-- Logo -->
-            <a href="{{route('nedmin.Index')}}" class="logo">
-                <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>..</b>.</span>
-                <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>...</b>CMS</span>
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center p-5"
+                href="{{route('nedmin.Index')}}">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Merhaba {{Auth::user()->name}} Hoşgeldin </div>
             </a>
 
-            <!-- Header Navbar -->
-            <nav class="navbar navbar-static-top" role="navigation">
-                <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                    <span class="sr-only">Toggle navigation</span>
+
+
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('nedmin.Index')}}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('blog.index')}}">
+                    <i class="fas fa-pen-square fas fa-pen-square"></i>
+                    <span>Blog</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('page.index')}}">
+                    <i class="far fa-address-card"></i>
+                    <span>Hakkımızda</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('slider.index')}}">
+                    <i class="fas fa-sliders-h"></i>
+                    <span>Slider</span></a>
+            </li>
+       
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <i class="fas fa-cogs"></i>
+                    <span>Yönetim</span>
                 </a>
-                <!-- Navbar Right Menu -->
-                <div class="navbar-custom-menu">
-                    <ul class="nav navbar-nav">
+                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
 
-                        <!-- User Account Menu -->
-                        <li class="dropdown user user-menu">
-                            <!-- Menu Toggle Button -->
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <!-- The user image in the navbar-->
-                                <img src="/images/users/{{Auth::user()->user_file}}" class="user-image" alt="User Image">
-                                <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">{{Auth::user()->name}}</span>
+                        <a class="collapse-item" href="{{route('user.index')}}">Yönetici</a>
+                        <a class="collapse-item" href="{{route('settings.Index')}}">Ayarlar</a>
+
+                    </div>
+                </div>
+            </li>
+
+
+   
+
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+
+
+
+
+
+
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
+                                <img class="img-profile rounded-circle" src="/images/users/{{Auth::user()->user_file}}">
                             </a>
-                            <ul class="dropdown-menu">
-                                <!-- The user image in the menu -->
-                                <li class="user-header">
-                                    <img src="/images/users/{{Auth::user()->user_file}}" class="img-circle" alt="User Image">
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="{{route('user.edit',Auth::user()->id)}}">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profili Düzenle
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
 
-                                    <p>
-                                    {{Auth::user()->name}} - Web Developer
-                                    </p>
-                                </li>
-                                <!-- Menu Body -->
-                            
-                                <!-- Menu Footer-->
-                                <li class="user-footer">
-                                    <div class="pull-left">
-                                        <a href="{{route('user.edit',Auth::user()->id)}}" class="btn btn-default btn-flat">Profile Düzenle</a>
-                                    </div>
-                                    <div class="pull-right">
-                                        <a href="{{route('nedmin.Logout')}}" class="btn btn-default btn-flat">Güvenli Çıkış</a>
-                                    </div> 
-                                </li>
-                            </ul>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{route('nedmin.Logout')}}">
+
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Güvenli Çıkış
+                                </a>
+                            </div>
                         </li>
 
                     </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- Left side column. contains the logo and sidebar -->
-        <aside class="main-sidebar">
 
-            <!-- sidebar: style can be found in sidebar.less -->
-            <section class="sidebar">
+                </nav>
+                <!-- End of Topbar -->
 
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="/images/users/{{Auth::user()->user_file}}" class="img-circle" alt="User Image">
-                    </div>
-                    <div class="pull-left info">
-                        <p>{{Auth::user()->name}}</p>
-                        <p>Yönetici</p>
-                        <!-- Status -->
-                    </div>
+
+
+
+
+
+
+
+                <div class="container-fluid">
+                    @yield('content')
+                    <!-- content  -->
                 </div>
 
 
-                <!-- Sidebar Menu -->
-                <ul class="sidebar-menu" data-widget="tree">
-                    <li class="header">MENULER</li>
-                    <!-- Optionally, you can add icons to the links -->
-                    <li class="active"><a href="{{route('nedmin.Index')}}"><i class="fa fa-link"></i>
-                            <span>Dashboard</span></a></li>
-
-                    <li class="active"><a href="{{route('blog.index')}}"><i class="fa fa-paper-plane"></i>
-                            <span>Blogs</span></a></li>
-                    <li class="active"><a href="{{route('page.index')}}"><i class="fa fa-cog"></i>
-                            <span>Pages</span></a></li>
-                    <li class="active"><a href="{{route('slider.index')}}"><i class="fa fa-cog"></i>
-                            <span>Slider</span></a></li>
 
 
 
 
-                    <li class="treeview active ">
-                        <a href="#"><i class="fa fa-link"></i> <span>Yönetim</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li class="active"><a href="{{route('user.index')}}"><i class="fa fa-user"></i>
-                                    <span>Yönetici</span></a></li>
-
-                            <li class="active"><a href="{{route('settings.Index')}}"><i class="fa fa-cog"></i>
-                                    <span>Ayarlar</span></a></li>
-                        </ul>
-                    </li>
 
 
-                </ul>
-                <!-- /.sidebar-menu -->
-            </section>
-            <!-- /.sidebar -->
-        </aside>
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            @yield('content')
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white text-center" style=" position: absolute; display: block;  bottom: 0;" >
+                    <div class="container my-auto  ">
+                        <div class="copyright text-center   "  >
+                            <span> Copyright &copy; Web Development Team 2021</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
 
-            <!-- Main content -->
-            <section class="content container-fluid">
-
-                <!--------------------------
-        | Your Page Content Here |
-        -------------------------->
-
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="pull-right hidden-xs">
-                Anything you want
             </div>
-            <!-- Default to the left -->
-            <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
-        </footer>
+            <!-- End of Content Wrapper -->
 
-        <!-- Control Sidebar -->
+        </div>
+        <!-- End of Page Wrapper -->
 
-        <!-- /.control-sidebar -->
-        <!-- Add the sidebar's background. This div must be placed
-  immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
-    </div>
-    <!-- ./wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    <!-- REQUIRED JS SCRIPTS -->
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
-
-    @if(session()->has('success'))
-    <script>
-    alertify.success("{{session('success')}}")
-    </script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="/backend/panel/vendor/jquery/jquery.min.js"></script>
+        <script src="/backend/panel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
-    @endif
-    @if(session()->has('error'))
-    <script>
-    alertify.error("{{session('error')}}")
-    </script>
 
 
-    @endif
 
-    @foreach ($errors->all() as $error)
-    <script>
-    alertify.error('{{$error}}');
-    </script>
-    @endforeach
+        <!-- Core plugin JavaScript-->
+        <script src="/backend/panel/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!-- Custom scripts for all pages-->
+        <script src="/backend/panel/js/sb-admin-2.min.js"></script>
+
+        <script src="/backend/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="/backend/jquery-ui/jquery-ui.min.js"></script>
+
+
+        @if(session()->has('success'))
+        <script>
+        alertify.success("{{session('success')}}")
+        </script>
+
+
+        @endif
+        @if(session()->has('error'))
+        <script>
+        alertify.error("{{session('error')}}")
+        </script>
+
+
+        @endif
+
+        @foreach ($errors->all() as $error)
+        <script>
+        alertify.error('{{$error}}');
+        </script>
+        @endforeach
+
 </body>
 
 </html>

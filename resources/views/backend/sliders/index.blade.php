@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="content-header">
-    <div class="box box-primary">
+    <div class="box box-primary p-4">
         <div class="box-header with-border">
             <h3 class="box-title">
                 Sliders
@@ -39,10 +39,10 @@
 
 
                         <td width="5"><a href="{{route('slider.edit',$slider->id)}}"><i
-                                    class="fa fa-pencil-square"></i></a></td>
+                                    class="fas fa-edit"></i></a></td>
 
                         <td width="5"><a href="javascript:void(0)"><i id="@php echo $slider->id @endphp"
-                                    class="fa fa-trash-o"></i></a>
+                                    class="fas fa-trash"></i></a>
 
                         </td>
 
@@ -87,7 +87,7 @@ $(function() {
 
 });
 
-$(".fa-trash-o").click(function() {
+$(".fa-trash").click(function() {
     destroy_id = $(this).attr('id');
     alertify.confirm('Silme işlemini onaylayın', 'Bu işlem geri alınamaz',
         function() {
