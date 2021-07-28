@@ -99,7 +99,7 @@
                     <i class="fas fa-sliders-h"></i>
                     <span>Slider</span></a>
             </li>
-       
+
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
@@ -120,7 +120,7 @@
             </li>
 
 
-   
+
 
 
 
@@ -131,6 +131,17 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
+
+            <hr class="sidebar-divider d-none d-md-block">
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white text-center mt-4">
+                <div class="container my-auto  ">
+                    <div class="copyright text-center   ">
+                        <span> Copyright &copy; Web Developer</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
 
         </ul>
         <!-- End of Sidebar -->
@@ -212,15 +223,6 @@
 
 
 
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white text-center" style=" position: absolute; display: block;  bottom: 0;" >
-                    <div class="container my-auto  ">
-                        <div class="copyright text-center   "  >
-                            <span> Copyright &copy; Web Development Team 2021</span>
-                        </div>
-                    </div>
-                </footer>
-                <!-- End of Footer -->
 
             </div>
             <!-- End of Content Wrapper -->
