@@ -6,19 +6,19 @@
     <div class="box box-primary p-4">
         <div class="box-header with-border">
             <h3 class="box-title">
-                Settings
+                Ayarlar
             </h3>
         </div>
         <div class="box-body">
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>İd</th>
+                        <th class="col-1">İd</th>
 
-                        <th>Açıklama </th>
-                        <th>İçerik </th>
-                        <th> Anahtar Deger</th>
-                        <th> Type</th>
+                        <th class="col-1" >Açıklama </th>
+                        <th class="col-8"  >İçerik </th>
+                        <th class="col-1" > Anahtar Deger</th>
+                        <th class="col-1"> Type</th>
                         <th></th>
 
                         <th></th>
@@ -27,10 +27,11 @@
 
                 </thead>
                 <tbody id="sortable">
+                    @php $count=0;    @endphp
                     @foreach($data['adminSettings'] as $adminSettings)
-
+                        @php  $count++;  @endphp
                     <tr id="item-{{$adminSettings['id']}}">
-                        <td>{{$adminSettings['id']}}</td>
+                        <td>{{$count}}</td>
                         <td class="sortable">{{$adminSettings->settings_description}}</td>
                         <td>
                             @if($adminSettings->settings_type=="file")

@@ -16,8 +16,10 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-
+                        <th>Resim</th>
                         <th>Başlık</th>
+
+
                         <th></th>
                         <th></th>
 
@@ -28,13 +30,11 @@
                     @foreach($data['page'] as $page)
 
                     <tr id="item-{{$page['id']}}">
-                        <td class="sortable">{{$page->page_title}}</td>
-
-
-
-
-                        <td width="5"><a href="{{route('page.edit',$page->id)}}"><i
-                                    class="fas fa-edit"></i></a></td>
+                        <td width="300" class="sortable">
+                            <img width="100" src="/images/pages/{{$page->page_file}}" alt="">
+                        </td>
+                        <td>{{$page->page_title}}</td>
+                        <td width="5"><a href="{{route('page.edit',$page->id)}}"><i class="fas fa-edit"></i></a></td>
 
                         <td width="5"><a href="javascript:void(0)"><i id="@php echo $page->id @endphp"
                                     class="fas fa-trash"></i></a>

@@ -7,7 +7,7 @@
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">
-                    Settings
+                    Ayarlar Düzenleme
                 </h3>
             </div>
             <div class="box-body">
@@ -66,7 +66,7 @@
                         @if($settings->settings_type=="file")
                         <input type="hidden" name="old_file" value="{{$settings->settings_value}}">
                         @endif
-                        <div align="right" class="box-footer">
+                        <div align="right" class="box-footer mt-2">
                             <a href="{{route('nedmin.Index')}}" class="btn btn-primary">Dashboard</a>
 
                             <button class="btn btn-success" type="submit">Düzenle</button>
