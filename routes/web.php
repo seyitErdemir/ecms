@@ -48,10 +48,13 @@ Route::namespace('Backend')->group(function(){
     Route::middleware(['admin'])->group(function(){
         Route::prefix('nedmin/settings')->group(function(){
             Route::get('/','SettingsController@index')->name('settings.Index');
+            Route::post('/create','SettingsController@create')->name('settings.Create');
             Route::post('','SettingsController@sortable')->name('settings.Sortable');
             Route::get('/delete/{id}','SettingsController@destroy');
             Route::get('/edit/{id}','SettingsController@edit')->name('settings.Edit');
             Route::post('/{id}','SettingsController@update')->name('settings.Update');
+           
+            
 
 
     });
