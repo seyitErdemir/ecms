@@ -9,10 +9,13 @@
                 Ayarlar
             </h3>
             <ul class="nav nav-tabs">
+
                 @foreach($kategori as $kate)
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">{{$kate['kategori_title']}}</a>
+                    <a class="nav-link @if((Request::segment(4)==null&&$loop->index==0)||Request::segment(4)== $kate['kategori_id'])  active    @endif  "
+                        aria-current="page"
+                        href="{{route('settings.Kategori',['id'=>$kate['kategori_id']])}}">{{$kate['kategori_title']}}</a>
                 </li>
 
                 @endforeach
@@ -21,15 +24,14 @@
         </div>
         <div class="box-body">
             <table class="table  ">
-                <form action=" " method="post" enctype="multipart/form-data">
+                <form action="{{route('settings.Edit')}}" method="post" enctype="multipart/form-data">
 
                     @csrf
                     <tbody id="sortable">
-                        @foreach($kategori as $kate)
-                        @php
-                         $data=App\Models\Settings::Where('category_id',$kate['kategori_id'] )->get()
-                        @endphp
-                                @foreach( $data as $adminSettings)
+
+
+
+                        @foreach( $data['adminSettings'] as $adminSettings)
 
                         <tr id="item-{{$adminSettings['id']}}">
 
@@ -40,20 +42,34 @@
                                         </h6>
 
                                         @if($adminSettings->settings_type=="file")
+                                        @if($adminSettings->settings_value)
                                         <img width="100px" src="/images/settings/{{$adminSettings->settings_value}}"
                                             alt="">
-                                        <input type="file" value="">
-                                        @else <input type="text" class="form-control"
-                                            value="{{$adminSettings->settings_value}}">
+                                        <input type="file" name="{{$adminSettings->settings_key}}" value="{{$adminSettings->settings_value}}">
+
+                                        @else
+                                        <input type="file" name="{{$adminSettings->settings_key}}" value="">
+                                        @endif
+
+                                        @else <input type="text" name="{{$adminSettings->settings_key}}"
+                                            class="form-control" value="{{$adminSettings->settings_value}}">
                                         @endif
                                     </div>
                                     <div class="col-3">
                                         <label for="">Grup</label>
 
-                                        <select class="form-control js-example-basic-single" name="settings_category">
-                                            <option value="AL">Alabama</option>
+                                        <select class="form-control js-example-basic-single">
 
-                                            <option value="WY">Wyoming</option>
+
+                                            <option value=""></option>
+
+                                            @foreach($kategori as $kate)
+
+                                            <option value="{{$kate['kategori_title']}}">{{$kate['kategori_title']}}
+                                            </option>
+
+                                            @endforeach
+
                                         </select>
                                         @if($adminSettings->settings_delete)
                                         <a href="javascript:void(0)"><i id="@php echo $adminSettings->id @endphp"
@@ -72,16 +88,21 @@
 
 
                         </tr>
- 
-                              @endforeach
-                             <hr>
+
                         @endforeach
+
                     </tbody>
 
+                    <div align="right" class="box-footer">
+                        <a href="{{route('nedmin.Index')}}" class="btn btn-primary">Dashboard</a>
+
+                        <button class="btn btn-success" type="submit">Güncelle</button>
+                    </div>
 
                 </form>
 
             </table>
+
         </div>
 
 

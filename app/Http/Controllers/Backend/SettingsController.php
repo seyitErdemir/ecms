@@ -9,11 +9,12 @@ use Illuminate\Http\Request;
 class SettingsController extends Controller
 {
     public function index(){
-        $data['adminSettings']=Settings::all()->sortBy('id');
+        $data['admin']=Settings::all()->sortBy('id');
+        $data['adminSettings']=Settings::Where('category_id',1)->get();
         
         $kategori= array();
         $kategori_id=1;
-        foreach(  $data['adminSettings'] as $category){
+        foreach(  $data['admin'] as $category){
             if($category->category_id==$kategori_id){
                 array_push($kategori,['kategori_id'=>$category->category_id,'kategori_title'=>$category->settings_category]);
                 $kategori_id++;
@@ -57,7 +58,26 @@ class SettingsController extends Controller
     }
 
 
+   public function kategori($id){
+    $data['admin']=Settings::all()->sortBy('id');    
+    $data['adminSettings']=Settings::Where('category_id',$id)->get();
 
+    $kategori= array();
+        $kategori_id=1;
+        foreach(  $data['admin'] as $category){
+            if($category->category_id==$kategori_id){
+                array_push($kategori,['kategori_id'=>$category->category_id,'kategori_title'=>$category->settings_category]);
+                $kategori_id++;
+            }
+      
+        }
+     
+
+    return view('backend.settings.index',compact('data','kategori'));
+    
+ 
+  
+   }
 
     public function sortable(){
      //  print_r($_POST['item']);
@@ -79,11 +99,40 @@ class SettingsController extends Controller
 
          
     }
-    public function edit($id){
-        $settings=Settings::where('id',$id)->first();
 
-        return view('backend.settings.edit')->with('settings',$settings);
+
+
+
+
+
+
+
+    public function edit(Request $request){
+        
+      $key=array_keys($request->all());
+        
+      foreach($key as $ke){
+      
+        $settings=Settings::Where('settings_key',$ke)->update(
+            [
+                "settings_value"=>$request->$ke
+            ]
+            
+        );
+      }  
+ 
+
+      return back();
     }
+
+
+
+
+
+
+
+
+
     public function update(Request $request , $id){
 
         if ($request->hasFile('settings_value')) {

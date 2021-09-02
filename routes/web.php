@@ -51,9 +51,12 @@ Route::namespace('Backend')->group(function(){
             Route::post('/create','SettingsController@create')->name('settings.Create');
             Route::post('','SettingsController@sortable')->name('settings.Sortable');
             Route::get('/delete/{id}','SettingsController@destroy');
-            Route::get('/edit/{id}','SettingsController@edit')->name('settings.Edit');
+            
+            Route::post('/edit','SettingsController@edit')->name('settings.Edit');
+
             Route::post('/{id}','SettingsController@update')->name('settings.Update');
            
+            Route::get('/kategori/{id}','SettingsController@kategori')->name('settings.Kategori');
             
 
 
