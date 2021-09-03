@@ -45,10 +45,14 @@
                                         @if($adminSettings->settings_value)
                                         <img width="100px" src="/images/settings/{{$adminSettings->settings_value}}"
                                             alt="">
-                                        <input type="file" name="{{$adminSettings->settings_key}}" value="{{$adminSettings->settings_value}}">
-
+                                   
+                                        <input type="file" name="{{$adminSettings->settings_key}}" value="">
+                                        
+                                        <input type="text" name="{{$adminSettings->settings_key}}_old_file" value="{{$adminSettings->settings_value}}">
+                                     
                                         @else
                                         <input type="file" name="{{$adminSettings->settings_key}}" value="">
+                                      
                                         @endif
 
                                         @else <input type="text" name="{{$adminSettings->settings_key}}"
@@ -57,24 +61,34 @@
                                     </div>
                                     <div class="col-3">
                                         <label for="">Grup</label>
+                                        <div class="row">
+                                            <div class="col-10">
 
-                                        <select class="form-control js-example-basic-single">
+                                                <select class="form-control js-example-basic-single">
 
 
-                                            <option value=""></option>
+                                                    <option value=""></option>
 
-                                            @foreach($kategori as $kate)
+                                                    @foreach($kategori as $kate)
 
-                                            <option value="{{$kate['kategori_title']}}">{{$kate['kategori_title']}}
-                                            </option>
+                                                    <option value="{{$kate['kategori_title']}}">
+                                                        {{$kate['kategori_title']}}
+                                                    </option>
 
-                                            @endforeach
+                                                    @endforeach
 
-                                        </select>
-                                        @if($adminSettings->settings_delete)
-                                        <a href="javascript:void(0)"><i id="@php echo $adminSettings->id @endphp"
-                                                class="fas fa-trash"></i></a>
-                                        @endif
+                                                </select>
+                                            </div>
+                                            <div class="col-2">
+                                                @if($adminSettings->settings_delete)
+                                                <a href="javascript:void(0)"><i
+                                                        id="@php echo $adminSettings->id @endphp"
+                                                        class="fas fa-trash"></i></a>
+                                                @endif
+                                            </div>
+                                        </div>
+
+
                                     </div>
 
 

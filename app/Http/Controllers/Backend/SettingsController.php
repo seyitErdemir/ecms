@@ -109,9 +109,58 @@ class SettingsController extends Controller
 
     public function edit(Request $request){
         
+
+         
+         
       $key=array_keys($request->all());
-        
+     
+         
       foreach($key as $ke){
+      
+        if ($request->hasFile($ke)) {
+            
+          
+            
+            $file_name=uniqid().'.'.$request->$ke->getClientOriginalExtension();
+            
+            $kayit= $request->$ke->move(public_path('images/settings'),$file_name);
+           
+            if($kayit){
+                $yol=$ke."_old_file";
+                $path='images/settings/'.$request->$yol;
+                
+                if (file_exists($path)) {
+                     @unlink(public_path($path));
+                }
+            }
+          
+
+ 
+
+
+            $request->$ke=$file_name;
+            
+            
+            $settings=Settings::Where('settings_key',$ke)->update(
+                [
+                    "settings_value"=>$request->$ke
+                ]
+                
+            );
+          
+         }  
+      }
+      
+     
+       
+    
+
+
+
+
+      foreach($key as $ke){
+
+
       
         $settings=Settings::Where('settings_key',$ke)->update(
             [
