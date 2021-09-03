@@ -27,20 +27,15 @@ class SettingsController extends Controller
 
     public function create(Request $request ){
         
-       $category_id=-1;
+         
+  
          
         if($request->settings_category){
 
             $category_title=$request->settings_category;
-          
-           $category_id=Settings::Where('settings_category',$request->settings_category)->first()->category_id;
-           
-        }else{
-           
-            $category_title=$request->settings_category_2;
             $category_id=Settings::max('category_id')+1;
-      
-        }
+           
+        } 
       
 
         $settings=Settings::insert([
@@ -110,7 +105,7 @@ class SettingsController extends Controller
     public function edit(Request $request){
         
 
-         
+         dd($request->all());
          
       $key=array_keys($request->all());
      

@@ -43,16 +43,17 @@
 
                                         @if($adminSettings->settings_type=="file")
                                         @if($adminSettings->settings_value)
-                                        <img width="100px" src="/images/settings/{{$adminSettings->settings_value}}"
+                                        <img width="80px" src="/images/settings/{{$adminSettings->settings_value}}"
                                             alt="">
-                                   
+
                                         <input type="file" name="{{$adminSettings->settings_key}}" value="">
-                                        
-                                        <input type="text" name="{{$adminSettings->settings_key}}_old_file" value="{{$adminSettings->settings_value}}">
-                                     
+
+                                        <input type="hidden" name="{{$adminSettings->settings_key}}_old_file"
+                                            value="{{$adminSettings->settings_value}}">
+
                                         @else
                                         <input type="file" name="{{$adminSettings->settings_key}}" value="">
-                                      
+
                                         @endif
 
                                         @else <input type="text" name="{{$adminSettings->settings_key}}"
@@ -63,20 +64,13 @@
                                         <label for="">Grup</label>
                                         <div class="row">
                                             <div class="col-10">
-
-                                                <select class="form-control js-example-basic-single">
-
-
-                                                    <option value=""></option>
-
+ 
+                                                <select class="form-control"    name="settings_category">
+                                                 
                                                     @foreach($kategori as $kate)
-
-                                                    <option value="{{$kate['kategori_title']}}">
-                                                        {{$kate['kategori_title']}}
-                                                    </option>
-
+                                                    <option class="form-control" @if($kate['kategori_title']==$adminSettings->settings_category ) selected   @endif  value="{{$kate['kategori_title']}}">
+                                                        {{$kate['kategori_title']}}</option>
                                                     @endforeach
-
                                                 </select>
                                             </div>
                                             <div class="col-2">
@@ -146,28 +140,26 @@
                         </div>
                         <div class="col-3">
                             <label for="">Tip</label>
-                            <input type="text" name="settings_type" class="form-control">
+                            <select class="form-control  " name="settings_type">
+
+                                <option value="text">Text</option>
+                                <option value="file">Resim</option>
+                                <option value="ckeditor">Editor</option>
+
+
+                            </select>
                         </div>
                         <div class="col-3">
                             <div class="row">
-                                <div class="col-6">
-                                    <label for="">Grup</label>
-                                    <select class="form-control js-example-basic-single" name="settings_category">
 
-                                        <option value="">Boş</option>
+                                <label for="">Grup</label>
+                                <select class="form-control js-example-basic-single" name="settings_category">
+                                    @foreach($kategori as $kate)
+                                    <option class="form-control" value="{{$kate['kategori_title']}}">
+                                        {{$kate['kategori_title']}}</option>
+                                    @endforeach
+                                </select>
 
-                                        @foreach($kategori as $kate)
-
-                                        <option value="{{$kate['kategori_title']}}">{{$kate['kategori_title']}}</option>
-                                        @endforeach
-
-                                    </select>
-                                </div>
-                                <div class="col-6">
-                                    <label for="">Grup Ekleme</label>
-
-                                    <input type="text" name="settings_category_2" class="form-control">
-                                </div>
                             </div>
 
 
@@ -196,7 +188,11 @@
 <script>
 // In your Javascript (external .js resource or <script> tag)
 $(document).ready(function() {
-    $('.js-example-basic-single').select2();
+
+
+    $(".js-example-basic-single").select2({
+        tags: true
+    });
 });
 </script>
 <script type="text/javascript">

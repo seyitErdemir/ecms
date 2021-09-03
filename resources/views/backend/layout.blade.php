@@ -24,7 +24,7 @@
     <script src="/backend/jquery/dist/jquery.min.js"></script>
 
 
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 
 
@@ -272,6 +272,10 @@
         <script src="/backend/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="/backend/jquery-ui/jquery-ui.min.js"></script>
+
+        
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
 
         @if(session()->has('success'))
