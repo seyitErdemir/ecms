@@ -10,7 +10,8 @@ class SettingsController extends Controller
 {
     public function index(){
         $data['admin']=Settings::all()->sortBy('id');
-        $data['adminSettings']=Settings::Where('category_id',1)->get();
+        $data['adminSettings']=Settings::orderBy('settings_must','ASC')->Where('category_id',1)->get();
+ 
         
         $kategori= array();
         $kategori_id=1;
@@ -66,7 +67,7 @@ class SettingsController extends Controller
 
    public function kategori($id){
     $data['admin']=Settings::all()->sortBy('id');    
-    $data['adminSettings']=Settings::Where('category_id',$id)->get();
+    $data['adminSettings']=Settings::orderBy('settings_must','ASC')->Where('category_id',$id)->get();
 
     $kategori= array();
         $kategori_id=1;
@@ -86,7 +87,7 @@ class SettingsController extends Controller
    }
 
     public function sortable(){
-     //  print_r($_POST['item']);
+       
     foreach($_POST['item'] as $key=>$value){
         $settings=Settings::find(intval($value));
         $settings->settings_must=intval($key);
