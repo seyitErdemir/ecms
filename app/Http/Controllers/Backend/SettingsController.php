@@ -5,23 +5,22 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Settings;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class SettingsController extends Controller
 {
     public function index(){
         $data['admin']=Settings::all()->sortBy('id');
         $data['adminSettings']=Settings::orderBy('settings_must','ASC')->Where('category_id',1)->get();
- 
-        
+        $veri=Settings::select('category_id')->groupBy('category_id')->get();
+       
+       
         $kategori= array();
-        $kategori_id=1;
-        foreach(  $data['admin'] as $category){
-            if($category->category_id==$kategori_id){
-                array_push($kategori,['kategori_id'=>$category->category_id,'kategori_title'=>$category->settings_category]);
-                $kategori_id++;
-            }
-      
+        foreach ($veri as $key ) {
+            $category_title=Settings::Where('category_id',$key->category_id)->first()->settings_category;
+            array_push($kategori,['kategori_id'=>$key->category_id,'kategori_title'=>$category_title]);
+             
         }
+     
         
         return view('backend.settings.index',compact('data','kategori'));
     }
@@ -68,16 +67,15 @@ class SettingsController extends Controller
    public function kategori($id){
     $data['admin']=Settings::all()->sortBy('id');    
     $data['adminSettings']=Settings::orderBy('settings_must','ASC')->Where('category_id',$id)->get();
-
+    $veri=Settings::select('category_id')->groupBy('category_id')->get();
+       
+       
     $kategori= array();
-        $kategori_id=1;
-        foreach(  $data['admin'] as $category){
-            if($category->category_id==$kategori_id){
-                array_push($kategori,['kategori_id'=>$category->category_id,'kategori_title'=>$category->settings_category]);
-                $kategori_id++;
-            }
-      
-        }
+    foreach ($veri as $key ) {
+        $category_title=Settings::Where('category_id',$key->category_id)->first()->settings_category;
+        array_push($kategori,['kategori_id'=>$key->category_id,'kategori_title'=>$category_title]);
+         
+    }
      
 
     return view('backend.settings.index',compact('data','kategori'));
