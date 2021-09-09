@@ -56,19 +56,32 @@
 
                                         @endif
 
-                                        @else <input type="text" name="{{$adminSettings->settings_key}}"
-                                            class="form-control" value="{{$adminSettings->settings_value}}">
+                                        @elseif($adminSettings->settings_type=="text") <input type="text"
+                                            name="{{$adminSettings->settings_key}}" class="form-control"
+                                            value="{{$adminSettings->settings_value}}">
+
+                                        @else
+
+                                        @if($adminSettings->settings_type=="ckeditor")
+                                        <textarea class="form-control" id="editor1" name="{{$adminSettings->settings_key}}" rows="5"
+                                            required>{{$adminSettings->settings_value}}</textarea>
+                                        @endif
+                                        <script>
+                                        CKEDITOR.replace('editor1');
+                                        </script>
                                         @endif
                                     </div>
                                     <div class="col-3">
                                         <label for="">Grup</label>
                                         <div class="row">
                                             <div class="col-10">
- 
-                                                <select class="form-control"    name="settings_category">
-                                                 
+
+                                                <select class="form-control" name="settings_category">
+
                                                     @foreach($kategori as $kate)
-                                                    <option class="form-control" @if($kate['kategori_title']==$adminSettings->settings_category ) selected   @endif  value="{{$kate['kategori_title']}}">
+                                                    <option class="form-control"
+                                                        @if($kate['kategori_title']==$adminSettings->settings_category )
+                                                        selected @endif value="{{$kate['kategori_title']}}">
                                                         {{$kate['kategori_title']}}</option>
                                                     @endforeach
                                                 </select>

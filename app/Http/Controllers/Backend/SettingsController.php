@@ -25,6 +25,8 @@ class SettingsController extends Controller
         return view('backend.settings.index',compact('data','kategori'));
     }
 
+
+
     public function create(Request $request ){
         
          
@@ -46,7 +48,7 @@ class SettingsController extends Controller
             
         } 
       
-
+        
         $settings=Settings::insert([
             "settings_description"=>$request->settings_description,
             "settings_key"=>$request->settings_key,
@@ -114,7 +116,6 @@ class SettingsController extends Controller
     public function edit(Request $request){
         
 
-         dd($request->all());
          
       $key=array_keys($request->all());
      
