@@ -3,7 +3,7 @@
 @section('content')
 
 
- 
+
 <section class="content-header">
     <div class="box box-primary p-4">
         <div class="box-header with-border">
@@ -65,7 +65,8 @@
                                         @else
 
                                         @if($adminSettings->settings_type=="ckeditor")
-                                        <textarea class="form-control" id="editor1" name="{{$adminSettings->settings_key}}" rows="5"
+                                        <textarea class="form-control" id="editor1"
+                                            name="{{$adminSettings->settings_key}}" rows="5"
                                             required>{{$adminSettings->settings_value}}</textarea>
                                         @endif
                                         <script>
@@ -78,15 +79,15 @@
                                         <div class="row">
                                             <div class="col-10">
 
-                                                <select class="form-control" name="settings_category">
-
+                                                <select class="form-control" name="{{$adminSettings->settings_key}}_category">
                                                     @foreach($kategori as $kate)
                                                     <option class="form-control"
-                                                        @if($kate['kategori_title']==$adminSettings->settings_category )
-                                                        selected @endif value="{{$kate['kategori_title']}}">
-                                                        {{$kate['kategori_title']}}</option>
+                                                        {{$kate['kategori_title']==$adminSettings->settings_category ? "selected=''":""}}
+                                                        value="{{$kate['kategori_title']}}">{{$kate['kategori_title']}}</option>
                                                     @endforeach
                                                 </select>
+
+                                              
                                             </div>
                                             <div class="col-2">
                                                 @if($adminSettings->settings_delete)

@@ -48,13 +48,15 @@ class SettingsController extends Controller
             
         } 
       
-        
+        $key_category=$request->settings_key."_category";
+         
         $settings=Settings::insert([
             "settings_description"=>$request->settings_description,
             "settings_key"=>$request->settings_key,
             "settings_type"=>$request->settings_type,
             "settings_category"=>$category_title,
             "category_id"=>$category_id,
+            "key_category"=>$key_category,
             
         ]);
         if ($settings) {
@@ -113,14 +115,14 @@ class SettingsController extends Controller
 
 
     public function edit(Request $request){
-        
-
+     
+    
+      
          
       $key=array_keys($request->all());
-     
-         
       foreach($key as $ke){
-      
+     
+        //resimli inputların dolu olup olmadıgını kontrol edip kaydetmek için
         if ($request->hasFile($ke)) {
             
           
@@ -153,19 +155,30 @@ class SettingsController extends Controller
             );
           
          }  
-      }
+      } 
       
      
-       
-    
-
-
-
-
+     
+ 
       foreach($key as $ke){
 
-
-      
+        //kategorileri kaydırmak için
+        $category_id=Settings::Where('settings_category',$request->$ke)->first();
+       
+        if(!empty($category_id->category_id)){
+           
+         $settings=Settings::Where('key_category',$ke)->update(
+             [
+                 "settings_category"=>$request->$ke,
+                 "category_id"=>$category_id->category_id,
+             ]
+             
+         );
+         
+        }
+     
+  
+        // input içi degerleri kaydetmek için
         $settings=Settings::Where('settings_key',$ke)->update(
             [
                 "settings_value"=>$request->$ke
