@@ -31,10 +31,19 @@ class SettingsController extends Controller
   
          
         if($request->settings_category){
-
-            $category_title=$request->settings_category;
-            $category_id=Settings::max('category_id')+1;
            
+            $category_title=$request->settings_category;
+
+             
+            
+            if( empty(Settings::Where('settings_category',$category_title)->get()->first()) ){
+                
+                $category_id=Settings::max('category_id')+1;
+            }else{
+               
+                $category_id=Settings::Where('settings_category',$category_title)->first()->category_id;
+            } 
+            
         } 
       
 
