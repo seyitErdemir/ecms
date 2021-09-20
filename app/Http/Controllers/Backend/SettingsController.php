@@ -28,9 +28,7 @@ class SettingsController extends Controller
 
 
     public function create(Request $request ){
-        
-         
-  
+      
          
         if($request->settings_category){
            

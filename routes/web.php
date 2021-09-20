@@ -14,9 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('index');
 // });
+
+
+
+
+
 
 Route::namespace('Frontend')->group(function(){
     Route::get('/','DefaultController@index')->name('home.Index');
@@ -48,7 +55,12 @@ Route::namespace('Backend')->group(function(){
     Route::middleware(['admin'])->group(function(){
         Route::prefix('nedmin/settings')->group(function(){
             Route::get('/','SettingsController@index')->name('settings.Index');
+
+
             Route::post('/create','SettingsController@create')->name('settings.Create');
+
+
+            
             Route::post('','SettingsController@sortable')->name('settings.Sortable');
             Route::get('/delete/{id}','SettingsController@destroy');
             
@@ -89,6 +101,8 @@ Route::namespace('Backend')->group(function(){
             });
         });
 });
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// Auth::routes();
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
