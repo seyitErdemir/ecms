@@ -152,7 +152,14 @@ class SettingsController extends Controller
                 
             );
           
-         }  
+         }  else{
+            $settings=Settings::Where('settings_key',$ke)->update(
+                [
+                    "settings_value"=>$request->$ke
+                ]
+                
+            );
+         }
       } 
       
      
