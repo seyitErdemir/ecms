@@ -96,7 +96,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('slider.index')}}">
-                    <i class="fas fa-sliders-h"></i>
+                <i class="fab fa-slideshare"></i>
                     <span>Slider</span></a>
             </li>
 
