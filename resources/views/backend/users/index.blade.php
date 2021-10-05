@@ -6,7 +6,7 @@
     <div class="box box-primary p-4">
         <div class="box-header with-border">
             <h3 class="box-title">
-                Users
+                Kullanıcılar
             </h3>
             <div align="right">
                 <a href="{{route('user.create')}}" class="btn btn-success">Ekle</a>
@@ -16,7 +16,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>User Resmi</th>
+                        <th>Kullanıcı Resmi</th>
                         <th>Ad Soyad</th>
                         <th></th>
                         <th></th>
