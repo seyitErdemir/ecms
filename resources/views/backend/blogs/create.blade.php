@@ -21,6 +21,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="">Galeri Resimleri Seç</label>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <input type="file" required class="form-control" multiple name="blog_galeri">
+
+                            </div>
+                        </div>
+                    </div>
 
 
                     <div class="form-group">

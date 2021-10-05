@@ -40,6 +40,13 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        echo $request->blog_galeri['name'];///devam edecegim
+        dd($request->blog_galeri);
+        foreach ($request->blog_galeri as $galeri ) {
+          dd($galeri);
+
+        }
+ 
         if (strlen($request->blog_slug>3)) {
              $slug=Str::slug($request->blog_slug);
         }else{
