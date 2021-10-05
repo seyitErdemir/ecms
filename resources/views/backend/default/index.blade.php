@@ -7,11 +7,11 @@
      <div class="box box-primary">
          <div class="box-header with-border">
                <h3 class="box-title">
-                   Dashboard
+                   Anasayfa
                </h3>
          </div>
          <div class="box-body">
-             <p>Dashboard Page</p>
+             <p>Anasayfa</p>
          </div>
      </div>
 </section>
