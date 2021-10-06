@@ -25,7 +25,7 @@
                         <label for="">Galeri Resimleri Seç</label>
                         <div class="row">
                             <div class="col-xs-12">
-                                <input type="file" required class="form-control" multiple name="blog_galeri">
+                                <input  class="form-control"  type="file" name="images[]"   multiple  >
 
                             </div>
                         </div>

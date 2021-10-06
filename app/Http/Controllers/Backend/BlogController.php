@@ -40,12 +40,19 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        echo $request->blog_galeri['name'];///devam edecegim
-        dd($request->blog_galeri);
-        foreach ($request->blog_galeri as $galeri ) {
-          dd($galeri);
-
+         $images=$request->images;
+        foreach( $images as $image)
+        {
+            $imageName=$image->getClientOriginalName();
+        
+            $fileNames[] = $imageName;
         }
+
+        $images = json_encode($fileNames);
+        dd($images);
+   
+       
+     
  
         if (strlen($request->blog_slug>3)) {
              $slug=Str::slug($request->blog_slug);
