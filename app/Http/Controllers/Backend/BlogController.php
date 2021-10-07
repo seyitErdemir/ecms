@@ -38,13 +38,15 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+    
+        //çoklu resim kayıt sistemi  resimleri kaydetmekte sırada veritabanına kayıt var
          $images=$request->images;
         foreach( $images as $image)
         {
             $imageName=$image->getClientOriginalName();
-        
+           
+            $image->move(public_path('images/blogs'),$imageName);
             $fileNames[] = $imageName;
         }
 
