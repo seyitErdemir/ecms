@@ -142,6 +142,7 @@ class BlogController extends Controller
 
        }
 
+    //--------------------------- Bu yorum satırı eski galeri resimlerini silip yerine yeni galeri resimlerini getirmekteyim
        if ($request->hasFile('images')) {
             $images=$request->images;
             foreach( $images as $image){
@@ -164,7 +165,7 @@ class BlogController extends Controller
            $images=$request->old_galeri;
            
        }
-
+   //----------------------------
         
 
 
