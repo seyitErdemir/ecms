@@ -18,6 +18,9 @@
                     <tr>
 
                         <th>Başlık</th>
+                        <th>Resim</th>
+                        <th>Galeri</th>
+
                         <th></th>
                         <th></th>
 
@@ -30,11 +33,22 @@
                     <tr id="item-{{$blog['id']}}">
                         <td class="sortable">{{$blog->blog_title}}</td>
 
+                        <td maxheight="50" maxwidth="50">
+                            <img width="50" src="/images/blogs/{{$blog->blog_file}}" alt="">
+                        </td>
+
+                        <td>
+                            @if(!empty($blog->blog_galeri))
+                            @foreach(json_decode($blog->blog_galeri) as $galeri)
+                            <li style="display: inline-block;"><img width="50"    src="/images/blogs/{{$galeri}}" alt="" /></li>
+                            @endforeach
+                            @else Galeri Bulunmamakta
+                            @endif
+                        </td>
 
 
 
-                        <td width="5"><a href="{{route('blog.edit',$blog->id)}}"><i
-                                    class="fas fa-edit"></i></a></td>
+                        <td width="5"><a href="{{route('blog.edit',$blog->id)}}"><i class="fas fa-edit"></i></a></td>
 
                         <td width="5"><a href="javascript:void(0)"><i id="@php echo $blog->id @endphp"
                                     class="fas fa-trash"></i></a>

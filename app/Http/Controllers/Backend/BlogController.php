@@ -41,17 +41,18 @@ class BlogController extends Controller
     public function store(Request $request){
     
         //çoklu resim kayıt sistemi  resimleri kaydetmekte sırada veritabanına kayıt var
-         $images=$request->images;
-        foreach( $images as $image)
-        {
-            $imageName=$image->getClientOriginalName();
-           
-            $image->move(public_path('images/blogs'),$imageName);
-            $fileNames[] = $imageName;
+       
+        if(!empty($request->images)){
+            $images=$request->images;
+            foreach( $images as $image){
+                $imageName=uniqid().'.'.$image->getClientOriginalExtension();
+                $image->move(public_path('images/blogs'),$imageName);
+                $fileNames[] = $imageName;
+            }
+            $images = json_encode($fileNames);
+        }else{
+            $images=null;
         }
-
-        $images = json_encode($fileNames);
-        dd($images);
    
        
      
@@ -90,6 +91,7 @@ class BlogController extends Controller
             "blog_title"=>$request->blog_title,
             "blog_slug"=>$slug,
             "blog_file"=>$file_name,
+            "blog_galeri"=>$images,
             "blog_content"=>$request->blog_content,
             "blog_status"=>$request->blog_status,
         ]);
@@ -195,7 +197,17 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    { 
+        $resim_silme= Blogs::where('id',$id)->first();
+        @unlink(public_path('images/blogs/'.$resim_silme->blog_file));
+
+         
+        if(!empty($resim_silme->blog_galeri)){
+            foreach (json_decode($resim_silme->blog_galeri) as $galeri) {
+                @unlink(public_path('images/blogs/'.$galeri));
+            }
+        }
+
         $blog= Blogs::find(intval($id));
          if($blog->delete()){
                 echo 1;
