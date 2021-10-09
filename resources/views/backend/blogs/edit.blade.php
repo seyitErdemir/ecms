@@ -36,6 +36,34 @@
                         </div>
                     </div>
 
+                    @isset($blogs->blog_galeri)
+                    <div class="form-group">
+                        <label for="">Yüklü Galeri Resimleri</label>
+                        <div class="row">
+                            <ul>
+                                @if(!empty($blogs->blog_galeri))
+                                @foreach(json_decode($blogs->blog_galeri) as $galeri)
+                                <li style="display: inline-block;"><img width="50" src="/images/blogs/{{$galeri}}"
+                                        alt="" />
+                                </li>
+                                @endforeach
+                                @else Galeri Bulunmamakta
+                                @endif
+                            </ul>
+
+
+                        </div>
+                    </div>
+                    @endisset
+                    <div class="form-group">
+                        <label for="">Galeri Resimleri Seç</label>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="file" name="images[]" multiple>
+
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label for="">Başlık</label>
@@ -84,6 +112,7 @@
                         </div>
 
                         <input type="hidden" name="old_file" value="{{$blogs->blog_file}}">
+                        <input type="hidden" name="old_galeri" value="{{$blogs->blog_galeri}}">
 
                         <div align="right" class="box-footer">
                             <a href="{{route('nedmin.Index')}}" class="btn btn-primary">Dashboard</a>

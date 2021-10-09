@@ -142,10 +142,38 @@ class BlogController extends Controller
 
        }
 
+       if ($request->hasFile('images')) {
+            $images=$request->images;
+            foreach( $images as $image){
+                $imageName=uniqid().'.'.$image->getClientOriginalExtension();
+                $image->move(public_path('images/blogs'),$imageName);
+                $fileNames[] = $imageName;
+            }
+            $images = json_encode($fileNames);
+
+             
+            if(!empty($request->old_galeri)){
+                foreach (json_decode($request->old_galeri) as $galeri) {
+                    @unlink(public_path('images/blogs/'.$galeri));
+                }
+            }
+
+
+
+       }else{
+           $images=$request->old_galeri;
+           
+       }
+
+        
+
+
+
+
 
        if ($request->hasFile('blog_file')) {
            $request->validate([
-               'blog_file'=>'required|image|mimes:jpg,jpeg,png|max:2048',
+               'blog_file'=>'required|image|mimes:jpg,jpeg,png',
                'blog_title'=>'required',
                'blog_content'=>'required'
           
@@ -160,6 +188,7 @@ class BlogController extends Controller
         "blog_title"=>$request->blog_title,
         "blog_slug"=>$slug,
         "blog_file"=>$file_name,
+        "blog_galeri"=>$images,
         "blog_content"=>$request->blog_content,
         "blog_status"=>$request->blog_status,
     ]);
@@ -174,6 +203,7 @@ class BlogController extends Controller
        $blog=Blogs::Where('id',$id)->update([
         "blog_title"=>$request->blog_title,
         "blog_slug"=>$slug,
+        "blog_galeri"=>$images,
         "blog_content"=>$request->blog_content,
         "blog_status"=>$request->blog_status,
     ]);
