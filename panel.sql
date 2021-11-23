@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 06 Eki 2021, 22:44:12
+-- Üretim Zamanı: 20 Kas 2021, 22:48:40
 -- Sunucu sürümü: 10.4.19-MariaDB
 -- PHP Sürümü: 8.0.6
 
@@ -34,6 +34,7 @@ CREATE TABLE `blogs` (
   `blog_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `blog_slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `blog_file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `blog_galeri` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `blog_must` int(11) DEFAULT NULL,
   `blog_content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `blog_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1'
@@ -43,10 +44,10 @@ CREATE TABLE `blogs` (
 -- Tablo döküm verisi `blogs`
 --
 
-INSERT INTO `blogs` (`id`, `created_at`, `updated_at`, `blog_title`, `blog_slug`, `blog_file`, `blog_must`, `blog_content`, `blog_status`) VALUES
-(31, NULL, '2021-09-03 11:20:39', 'Voluptatem Non est', 'repudiandae-aut-prae', '61322f3708ab7.png', NULL, '<p>Herkese yeniden merhabalaar arkadaşlar Power and Energy Society PES Komitesi d&ouml;nemin ilk etkinliği ile karşınızda.Udemy de eğitmenlik yapan Nazım Tiryaki hocamız ile beraber olacağız.Vereceği Solidworks eğitimi t&uuml;m IEEE &uuml;yelerine a&ccedil;ıktır.</p>', '0'),
-(37, NULL, NULL, 'Aliqua Accusamus la', 'vel-unde-est-asperio', '615c7d3e755b0.png', NULL, '<p>adasd</p>', '1'),
-(38, NULL, NULL, 'Et voluptas quos eaq', 'ut-odio-consequatur', '615c7d6706f12.png', NULL, '<p>asdas</p>', '1');
+INSERT INTO `blogs` (`id`, `created_at`, `updated_at`, `blog_title`, `blog_slug`, `blog_file`, `blog_galeri`, `blog_must`, `blog_content`, `blog_status`) VALUES
+(42, NULL, '2021-11-20 17:49:06', 'deneme 1', 'deneme-1', '6161f6c618921.png', '[\"6161fe48f3513.png\",\"6161fe48f38d9.png\",\"6161fe48f3dd5.png\"]', 0, '<p>deneme 1&nbsp;deneme 1&nbsp;deneme 1&nbsp;deneme 1</p>', '1'),
+(44, NULL, '2021-11-20 17:49:06', 'deneme 3', 'deneme-3', '6161fe61b3458.png', NULL, 2, '<p>deneme 3&nbsp;&nbsp;deneme 3&nbsp;deneme 3&nbsp;deneme 3</p>', '1'),
+(46, NULL, '2021-11-20 17:49:06', 'Denem 2', 'ssss', '61995f281c832.jpg', '[\"61995f2814de7.jpg\",\"61995f28150fb.png\",\"61995f2816568.png\",\"61995f2816707.png\",\"61995f2816893.png\",\"61995f2816a4c.png\"]', 1, '<p>sss</p>', '1');
 
 -- --------------------------------------------------------
 
@@ -280,7 +281,7 @@ ALTER TABLE `users`
 -- Tablo için AUTO_INCREMENT değeri `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `failed_jobs`
@@ -304,7 +305,7 @@ ALTER TABLE `pages`
 -- Tablo için AUTO_INCREMENT değeri `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `sliders`
