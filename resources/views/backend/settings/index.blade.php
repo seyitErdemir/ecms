@@ -30,9 +30,6 @@
 
                     @csrf
                     <tbody id="sortable">
-
-
-
                         @foreach( $data['adminSettings'] as $adminSettings)
 
                         <tr id="item-{{$adminSettings['id']}}">
