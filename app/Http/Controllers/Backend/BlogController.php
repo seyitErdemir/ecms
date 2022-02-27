@@ -18,7 +18,7 @@ class BlogController extends Controller
     public function index()
     {
         $data['blog']=Blogs::all()->sortBy('blog_must');
-         
+     
         return view('backend.blogs.index',compact('data'));
     }
 

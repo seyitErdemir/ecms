@@ -1,91 +1,105 @@
 @extends('backend.layout')
-
 @section('content')
-<div class="col-8">
-    <section class="content-header">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">
-                    User Ekleme
-                </h3>
+
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                        <h4 class="mb-sm-0 font-size-18">Kullanıcı Ekleme</h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Kullanıcı</a></li>
+                                <li class="breadcrumb-item active">Kullanıcı Ekleme</li>
+                            </ol>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-            <div class="box-body">
-                <form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="">Resim Seç</label>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <input type="file" required class="form-control" name="user_file">
+            <!-- end page title -->
 
-                            </div>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Kullanıcı Ekleme</h4>
 
 
-                    <div class="form-group">
-                        <label for=""> Kullanıcı Adı </label>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <input type="text" name="name" class="form-control">
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="">Kullanıcı Adı (Email)</label>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <input type="email" name="email" class="form-control">
-                            </div>
-                        </div>
-                    </div>
+                            <form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                
+                                <div class="mb-3">
+                                    <label for="formrow-firstname-input" class="form-label">Kullanıcı Resmi</label>
+                                    <input id="formrow-firstname-input" type="file" class="form-control" name="user_file">
 
-                    <div class="form-group">
-                        <label for="">Şifre</label>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <input type="password" name="password" class="form-control">
-                            </div>
-                        </div>
-                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="formrow-firstname-input" class="form-label">Kullanıcı Adı</label>
+                                    <input id="formrow-firstname-input" type="text" name="name" class="form-control"  >
+                                </div>
 
+                                <div class="mb-3">
+                                    <label for="formrow-firstname-input" class="form-label">Email</label>
+                                    <input id="formrow-firstname-input" name="email" type="text" class="form-control"  >
+                                </div>
 
-                    <div class="form-group">
+                                <div class="mb-3">
+                                    <label for="formrow-firstname-input" class="form-label">Şifreniz</label>
+                                    <input id="formrow-firstname-input" type="text" name="password" class="form-control"> 
 
-                        <!-- <input type="hidden" name="old_file" value=""> -->
-                        <div class="form-group">
-                            <label for="">Durum</label>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <select name="user_status" class="form-control">
-                                        <option value="1">Aktif</option>
-                                        <option value="0">Pasif</option>
+                                </div>
 
+                                <div class="mb-3">
+                                    <label for="formrow-inputState" class="form-label">Durum</label>
+                                    <select id="formrow-inputState" name="user_status" class="form-control">
+                                        <option   value="1">Aktif</option>
+                                        <option   value="0">Pasif</option>
                                     </select>
                                 </div>
-                            </div>
+ 
+
                         </div>
 
+                        <div class="mb-3">
 
 
-
-
-                        <div align="right" class=" box-footer">
-
-                            <a href="{{route('nedmin.Index')}}" class="btn btn-primary">Dashboard</a>
-                            <button class="btn btn-success" type="submit">Ekle</button>
                         </div>
+                        <div class="mb-3 p-2">
+                            <button type="submit" class="btn btn-success w-md float-end mx-3 ">Ekle</button>
+                            <a href="{{route('nedmin.Index')}}" class="btn btn-primary w-md float-end ms-2">Dashboard</a>
+
+                        </div>
+                        </form>
+
+
+
+
+
+
+
+
                     </div>
-
-
-
-                </form>
-
+                    <!-- end card body -->
+                </div>
+                <!-- end card -->
             </div>
+            <!-- end col -->
         </div>
-    </section>
+        <!-- end row -->
+    </div> <!-- container-fluid -->
 </div>
+<!-- End Page-content -->
+ 
+</div>
+<!-- end main content-->
 
 
 

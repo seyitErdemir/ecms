@@ -1,7 +1,0 @@
-.sortable{
-    cursor: -webkit-grab;
-    cursor: grab;
-}
-.table   body   tr   td{
-    vertical-align: middle;
-}
