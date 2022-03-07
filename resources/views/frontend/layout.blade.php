@@ -20,13 +20,12 @@
 
 <body>
 
+
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{{route('home.Index')}}">... Yazılım</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -34,16 +33,25 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('home.Index')}}">Anasayfa</a>
                     </li>
-                
-                
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('blog.Index')}}">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/page/{{$slug}}">Sayfalar</a>
                     </li>
-                   
-             
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('change-lang','tr') }}">Türkçe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('change-lang','en') }}">İngilizce</a>
+                    </li>
+
+                    <li class="nav-item nav-link "><a href="#.">Mevcut Dil : {{ App::getLocale() }}</a></li>
+
+                    <li class="nav-item nav-link "><a href="#.">{{ __('page.deneme'); }}</a></li>
+
                 </ul>
             </div>
         </div>

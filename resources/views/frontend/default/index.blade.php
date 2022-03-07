@@ -1,6 +1,7 @@
 @extends('frontend.layout')
 @section('title',"anasayfa cart curt")
 @section('content')
+ 
 <header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 
@@ -8,8 +9,7 @@
             <!-- Slide One - Set the background image for this slide in the line below -->
             @php($count=0)
             @foreach($data['slider'] as $slider)
-            <div class="carousel-item @if($count++==0) active @endif"
-                style="background-image: url('/images/sliders/{{$slider->slider_file}}')">
+            <div class="carousel-item @if($count++==0) active @endif" style="background-image: url('/images/sliders/{{$slider->slider_file}}')">
                 <div class="carousel-caption d-none d-md-block">
                     <a href="{{$slider->slider_url}}">
                         <h3>{{$slider->slider_title}}</h3>
@@ -37,16 +37,16 @@
     <h2>Portfolio Heading</h2>
 
     <div class="row">
-         
+
         @foreach($data['blog'] as $blog)
         <div class="col-lg-4 col-sm-6 portfolio-item">
             <div class="card h-100">
-                <a href="{{route('blog.Detail',$blog->blog_slug)}}"><img class="card-img-top" src="/images/blogs/{{$blog->blog_file}}" alt=""></a>
+                <a href="{{route('blog.Detail',$blog->blog_slug)}}"><img class="card-img-top" src="/images/blogs/@if(app()->getLocale()=='tr'){{$blog->blog_file}}@else{{$blog->en_blog_file}}@endif" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#">{{$blog->blog_title}}</a>
+                        <a href="#"> @if(app()->getLocale()=="tr") {{$blog->blog_title}} @else {{$blog->en_blog_title}} @endif</a>
                     </h4>
-                    <p class="card-text">{!! substr($blog->blog_content,0,340)!!}</p>
+                    <p class="card-text">@if(app()->getLocale()=="tr") {!! substr($blog->blog_content,0,340)!!} @else {!! substr($blog->en_blog_content,0,340)!!} @endif</p>
                 </div>
             </div>
         </div>

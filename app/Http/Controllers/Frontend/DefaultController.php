@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 class DefaultController extends Controller
 {
      public function index(){
+      
+
+
          $data['blog']=Blogs::all()->sortBy('blog_must');
          $data['slider']=Sliders::all()->sortBy('slider_must');
         

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,10 +23,6 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/temadeneme', function () {
-    return view('backend.default.index2');
-});
-
 Route::get('/icons', function () {
     return view('backend.default.icon');
 });
@@ -40,7 +37,23 @@ Route::get('/iletisimForm', function () {
 });
 
 
+
+
+
+
+// Route::get('/{locale}', function ($locale) {
+//     app()->setLocale($locale);
+//     dd(app()->getLocale());
+//     return with('/');
+// });
+
 Route::namespace('Frontend')->group(function () {
+
+
+
+    Route::get('change-lang/{locale}', 'LocalizationController@index')->name('change-lang');
+
+
     Route::get('/', 'DefaultController@index')->name('home.Index');
 
     //blog
@@ -67,11 +80,7 @@ Route::namespace('Backend')->group(function () {
     Route::middleware(['admin'])->group(function () {
         Route::prefix('nedmin/settings')->group(function () {
             Route::get('/', 'SettingsController@index')->name('settings.Index');
-
-
             Route::post('/create', 'SettingsController@create')->name('settings.Create');
-
-
 
             Route::post('', 'SettingsController@sortable')->name('settings.Sortable');
             Route::get('/delete/{id}', 'SettingsController@destroy');
@@ -92,6 +101,7 @@ Route::namespace('Backend')->group(function () {
     Route::prefix('nedmin')->group(function () {
         Route::middleware(['admin'])->group(function () {
 
+
             //blog module
             Route::post('/blog/sortable', 'BlogController@sortable')->name('blog.Sortable');
             Route::resource('blog', 'BlogController');
@@ -105,6 +115,14 @@ Route::namespace('Backend')->group(function () {
             //admin
             Route::post('/user/sortable', 'UserController@sortable')->name('user.Sortable');
             Route::resource('user', 'UserController');
+
+
+            //ceviri 
+            Route::get('/ceviri', function () {
+                return view('backend.default.ceviri');
+            });
+
+            Route::post('/ceviriPost', 'DefaultController@ceviriPost');
         });
     });
 });

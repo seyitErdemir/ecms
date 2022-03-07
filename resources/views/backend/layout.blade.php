@@ -270,6 +270,13 @@
 
                         <li class="menu-title" key="t-components">Bileşenler</li>
                         <li>
+                            <a href="/nedmin/ceviri" class="waves-effect">
+                                <i class="mdi mdi-google-translate"></i>
+                                <span key="t-icons">Çeviri</span>
+                            </a>
+
+                        </li>
+                        <li>
                             <a href="/icons" class="waves-effect">
                                 <i class="bx bx-aperture"></i>
                                 <span key="t-icons">Icons</span>
