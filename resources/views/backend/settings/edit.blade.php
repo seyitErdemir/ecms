@@ -67,7 +67,7 @@
                         <input type="hidden" name="old_file" value="{{$settings->settings_value}}">
                         @endif
                         <div align="right" class="box-footer mt-2">
-                            <a href="{{route('nedmin.Index')}}" class="btn btn-primary">Dashboard</a>
+                            <a href="{{route('admin.Index')}}" class="btn btn-primary">Dashboard</a>
 
                             <button class="btn btn-success" type="submit">Düzenle</button>
                         </div>

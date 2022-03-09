@@ -216,9 +216,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    { 
         $user= User::find(intval($id));
-         if($user->delete()){
+         if($user->Delete()){
                 echo 1;
          }echo 0;
     }   

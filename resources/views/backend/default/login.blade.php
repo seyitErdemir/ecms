@@ -37,7 +37,7 @@
                                 <h3>Yönetici Girişi</h3>
 
                             </div>
-                            <form action="{{route('nedmin.Authenticate')}}" method="post" class="login100-form validate-form">
+                            <form action="{{route('admin.Authenticate')}}" method="post" class="login100-form validate-form">
                                 @csrf
 
                                 @if(Session::has('error'))
@@ -150,10 +150,10 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <div class="login100-pic js-tilt" data-tilt="">
-                    <a href="{{route('nedmin.Login')}}"><img src="/images/settings/img-01.png" alt="IMG"></a>
+                    <a href="{{route('admin.Login')}}"><img src="/images/settings/img-01.png" alt="IMG"></a>
                 </div>
 
-                <form action="{{route('nedmin.Authenticate')}}" method="post" class="login100-form validate-form">
+                <form action="{{route('admin.Authenticate')}}" method="post" class="login100-form validate-form">
                     @csrf
 
                     @if(Session::has('error'))

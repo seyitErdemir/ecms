@@ -48,7 +48,7 @@
 
                                 <div class="mb-3">
                                     <label for="formrow-firstname-input" class="form-label">Email</label>
-                                    <input id="formrow-firstname-input" name="email" type="text" class="form-control"  >
+                                    <input id="formrow-firstname-input" name="email" type="email" class="form-control"  >
                                 </div>
 
                                 <div class="mb-3">
@@ -74,7 +74,7 @@
                         </div>
                         <div class="mb-3 p-2">
                             <button type="submit" class="btn btn-success w-md float-end mx-3 ">Ekle</button>
-                            <a href="{{route('nedmin.Index')}}" class="btn btn-primary w-md float-end ms-2">Dashboard</a>
+                            <a href="{{route('admin.Index')}}" class="btn btn-primary w-md float-end ms-2">Dashboard</a>
 
                         </div>
                         </form>

@@ -20,10 +20,10 @@ class Admin
         if (!Auth::guest() && Auth::user()->role=='admin'  ) {
             return $next($request); 
         }else{
-            return redirect(route('nedmin.Login'))->with('error','Erişim Yetkiniz Yok');
+            return redirect(route('admin.Login'))->with('error','Erişim Yetkiniz Yok');
         }
 
-        return redirect(route('nedmin.Login'));
+        return redirect(route('admin.Login'));
         
     }
 

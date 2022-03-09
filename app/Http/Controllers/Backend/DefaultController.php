@@ -26,7 +26,7 @@ class DefaultController extends Controller
         $remember_me = $request->has('remember_me') ? true : false;
 
         if (Auth::attempt($credentials, $remember_me)) {
-            return redirect()->intended(route('nedmin.Index'));
+            return redirect()->intended(route('admin.Index'));
         } else {
             return back()->with('error', 'Hatalı Kullanıcı');
         }
@@ -35,7 +35,7 @@ class DefaultController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect(route('nedmin.Login'))->with('success', 'Güvenli Çıkış Yapıldı');
+        return redirect(route('admin.Login'))->with('success', 'Güvenli Çıkış Yapıldı');
     }
 
 

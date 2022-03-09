@@ -86,7 +86,7 @@
                         </div>
                         <div class="mb-3 p-2">
                             <button type="submit" class="btn btn-warning  w-md float-end  mx-3 ">Güncelle</button>
-                            <a href="{{route('nedmin.Index')}}" class="btn btn-primary w-md float-end ms-2">Dashboard</a>
+                            <a href="{{route('admin.Index')}}" class="btn btn-primary w-md float-end ms-2">Dashboard</a>
 
                         </div>
                         </form>

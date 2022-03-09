@@ -127,7 +127,7 @@
                                 </tbody>
 
                                 <div align="right" class="box-footer my-3">
-                                    <a href="{{route('nedmin.Index')}}" class="btn btn-primary">Dashboard</a>
+                                    <a href="{{route('admin.Index')}}" class="btn btn-primary">Dashboard</a>
 
                                     <button class="btn btn-warning " type="submit">Güncelle</button>
                                 </div>
@@ -196,7 +196,7 @@
                             </div>
 
                             <div align="right" class="box-footer mt-2">
-                                <a href="{{route('nedmin.Index')}}" class="btn btn-primary">Dashboard</a>
+                                <a href="{{route('admin.Index')}}" class="btn btn-primary">Dashboard</a>
 
                                 <button class="btn btn-success" type="submit">Ekle</button>
                             </div>
@@ -270,7 +270,7 @@
         destroy_id = $(this).attr('id');
         alertify.confirm('Silme işlemini onaylayın', 'Bu işlem geri alınamaz',
             function() {
-                location.href = "/nedmin/settings/delete/" + destroy_id;
+                location.href = "/admin/settings/delete/" + destroy_id;
             },
             function() {
                 alertify.error('Silme İşlemi İptal Edildi');

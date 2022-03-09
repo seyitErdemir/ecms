@@ -36,7 +36,7 @@
                         <div class="card-body">
 
                             <h4 class="card-title">Buttons example</h4>
-                            <a href="{{route('nedmin.Index')}}" class="btn btn-warning my-2">Yeni Ekle</a>
+                            <a href="{{route('admin.Index')}}" class="btn btn-warning my-2">Yeni Ekle</a>
 
                             <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
                                 <thead>
@@ -148,7 +148,7 @@
                         <div class="card-body">
                             <h4 class="card-title mb-4">Yeni Ekle</h4>
 
-                            <form action="/nedmin/ceviriPost" method="post" enctype="multipart/form-data">
+                            <form action="/admin/ceviriPost" method="post" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="mb-3">
@@ -204,7 +204,7 @@
                         </div>
                         <div class="mb-3 p-2">
                             <button type="submit" class="btn btn-success w-md float-end mx-3 ">Ekle</button>
-                            <a href="{{route('nedmin.Index')}}" class="btn btn-primary w-md float-end ms-2">Dashboard</a>
+                            <a href="{{route('admin.Index')}}" class="btn btn-primary w-md float-end ms-2">Dashboard</a>
 
                         </div>
                         </form>

@@ -5,8 +5,8 @@
 
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <title>{{$panel_title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,7 +70,7 @@
                 <div class="d-flex">
                     <!-- LOGO -->
                     <div class="navbar-brand-box">
-                        <a href="/nedmin/dashboard" class="logo logo-dark">
+                        <a href="/admin/dashboard" class="logo logo-dark">
                             <span class="logo-sm">
                                 <img src="/images/settings/{{$panel_logo}}" alt="" height="22">
                             </span>
@@ -79,7 +79,7 @@
                             </span>
                         </a>
 
-                        <a href="/nedmin/dashboard" class="logo logo-light">
+                        <a href="/admin/dashboard" class="logo logo-light">
                             <span class="logo-sm">
                                 <img src="/images/settings/{{$panel_logo}}" alt="" height="22">
                             </span>
@@ -198,9 +198,9 @@
                                 <span key="t-profile">Profile Düzenle</span></a>
 
                             <a class="dropdown-item d-block" href="{{route('settings.Index')}}"><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Ayarlar</span></a>
-                            <a class="dropdown-item" href="{{route('nedmin.Logout')}}"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Giriş Ekranı</span></a>
+                            <a class="dropdown-item" href="{{route('admin.Logout')}}"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Giriş Ekranı</span></a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="{{route('nedmin.Logout')}}"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Güvenli Çıkış</span></a>
+                            <a class="dropdown-item text-danger" href="{{route('admin.Logout')}}"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Güvenli Çıkış</span></a>
                         </div>
                     </div>
 
@@ -221,7 +221,7 @@
                         <li class="menu-title" key="t-menu">Menu</li>
 
                         <li>
-                            <a href="/nedmin/dashboard" class="waves-effect">
+                            <a href="/admin/dashboard" class="waves-effect">
                                 <i class="bx bx-home-circle"></i>
                                 <span key="t-dashboards">Dashboards</span>
                             </a>
@@ -270,7 +270,7 @@
 
                         <li class="menu-title" key="t-components">Bileşenler</li>
                         <li>
-                            <a href="/nedmin/ceviri" class="waves-effect">
+                            <a href="/admin/ceviri" class="waves-effect">
                                 <i class="mdi mdi-google-translate"></i>
                                 <span key="t-icons">Çeviri</span>
                             </a>
@@ -434,6 +434,41 @@
 
 
 
+
+
+    <script>
+        $.ajaxSetup({
+            error: function(jqXHR, textStatus, errorThrown) {
+                if (jqXHR.status === 0) {
+                    alert('Bağlantı yok, ağı doğrulayın.');
+                } else if (jqXHR.status == 403) {
+                    alert('Erişim yetkiniz yok. [403]');
+                } else if (jqXHR.status == 404) {
+                    alert('Sayfa bulunamadı. [404]');
+                } else if (jqXHR.status == 419) {
+                    alert('419 (unknown status)');
+                } else if (jqXHR.status == 500) {
+                    alert('Sunucu Hatası [500].');
+                } else if (textStatus === 'parsererror') {
+                    alert('İstenen JSON ayrıştırması başarısız');
+                } else if (textStatus === 'timeout') {
+                    alert('Zaman aşımı hatası.');
+                } else if (textStatus === 'abort') {
+                    alert('Ajax isteği reddedildi.');
+                } else {
+                    alert('Hata.\n' + textStatus + ': ' + errorThrown);
+                }
+            }
+        });
+
+        $(document).ajaxError(function(event, jqxhr, settings, exception) {
+            if (exception == 'Unauthorized') {
+                // yetki yoksa login sayfasına yönlendirilebilir vb.
+            }
+        });
+    </script>
+
+
     @if(session()->has('success'))
     <script>
         alertify.success("{{session('success')}}")
@@ -454,6 +489,8 @@
         alertify.error('{{$error}}');
     </script>
     @endforeach
+
+
 </body>
 
 </html>

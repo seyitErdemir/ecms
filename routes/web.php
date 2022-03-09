@@ -69,16 +69,16 @@ Route::namespace('Frontend')->group(function () {
 
 Route::namespace('Backend')->group(function () {
 
-    Route::prefix('nedmin')->group(function () {
-        Route::get('/dashboard', 'DefaultController@index')->name('nedmin.Index')->middleware('admin');
-        Route::get('/', 'DefaultController@login')->name('nedmin.Login');
-        Route::get('/logout', 'DefaultController@logout')->name('nedmin.Logout');
+    Route::prefix('admin')->group(function () {
+        Route::get('/dashboard', 'DefaultController@index')->name('admin.Index')->middleware('admin');
+        Route::get('/', 'DefaultController@login')->name('admin.Login');
+        Route::get('/logout', 'DefaultController@logout')->name('admin.Logout');
 
-        Route::post('/login', 'DefaultController@authenticate')->name('nedmin.Authenticate');
+        Route::post('/login', 'DefaultController@authenticate')->name('admin.Authenticate');
     });
 
     Route::middleware(['admin'])->group(function () {
-        Route::prefix('nedmin/settings')->group(function () {
+        Route::prefix('admin/settings')->group(function () {
             Route::get('/', 'SettingsController@index')->name('settings.Index');
             Route::post('/create', 'SettingsController@create')->name('settings.Create');
 
@@ -98,7 +98,7 @@ Route::namespace('Backend')->group(function () {
 
 
 Route::namespace('Backend')->group(function () {
-    Route::prefix('nedmin')->group(function () {
+    Route::prefix('admin')->group(function () {
         Route::middleware(['admin'])->group(function () {
 
 

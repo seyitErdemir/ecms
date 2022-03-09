@@ -55,10 +55,10 @@
                                     </tr>
                                 </thead>
 
-                                <tbody  >
+                                <tbody>
                                     @foreach($data['user'] as $user)
 
-                                    <tr >
+                                    <tr>
 
 
                                         <td width="300" class="sortable" maxheight="50" maxwidth="50">
@@ -89,14 +89,15 @@
 
 </div>
 <!-- end main content-->
-<script type="text/javascript">
-    
-
+<script>
     $(".fa-trash").click(function() {
         destroy_id = $(this).attr('id');
         alertify.confirm('Silme işlemini onaylayın', 'Bu işlem geri alınamaz',
             function() {
                 $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     type: "DELETE",
                     url: "user/" + destroy_id,
                     success: function(msg) {
