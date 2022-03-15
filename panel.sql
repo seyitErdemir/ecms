@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 20 Kas 2021, 22:48:40
+-- Üretim Zamanı: 15 Mar 2022, 21:37:20
 -- Sunucu sürümü: 10.4.19-MariaDB
 -- PHP Sürümü: 8.0.6
 
@@ -37,6 +37,10 @@ CREATE TABLE `blogs` (
   `blog_galeri` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `blog_must` int(11) DEFAULT NULL,
   `blog_content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `en_blog_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `en_blog_file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `en_blog_content` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `en_blog_gallery` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `blog_status` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -44,10 +48,9 @@ CREATE TABLE `blogs` (
 -- Tablo döküm verisi `blogs`
 --
 
-INSERT INTO `blogs` (`id`, `created_at`, `updated_at`, `blog_title`, `blog_slug`, `blog_file`, `blog_galeri`, `blog_must`, `blog_content`, `blog_status`) VALUES
-(42, NULL, '2021-11-20 17:49:06', 'deneme 1', 'deneme-1', '6161f6c618921.png', '[\"6161fe48f3513.png\",\"6161fe48f38d9.png\",\"6161fe48f3dd5.png\"]', 0, '<p>deneme 1&nbsp;deneme 1&nbsp;deneme 1&nbsp;deneme 1</p>', '1'),
-(44, NULL, '2021-11-20 17:49:06', 'deneme 3', 'deneme-3', '6161fe61b3458.png', NULL, 2, '<p>deneme 3&nbsp;&nbsp;deneme 3&nbsp;deneme 3&nbsp;deneme 3</p>', '1'),
-(46, NULL, '2021-11-20 17:49:06', 'Denem 2', 'ssss', '61995f281c832.jpg', '[\"61995f2814de7.jpg\",\"61995f28150fb.png\",\"61995f2816568.png\",\"61995f2816707.png\",\"61995f2816893.png\",\"61995f2816a4c.png\"]', 1, '<p>sss</p>', '1');
+INSERT INTO `blogs` (`id`, `created_at`, `updated_at`, `blog_title`, `blog_slug`, `blog_file`, `blog_galeri`, `blog_must`, `blog_content`, `en_blog_title`, `en_blog_file`, `en_blog_content`, `en_blog_gallery`, `blog_status`) VALUES
+(53, NULL, '2022-03-06 20:51:20', 'tr tr trt rtr tr tr tr tr tr tr tr', 'tr-tr-trt-rtr-tr-tr-tr-tr-tr-tr-tr', '622533618bd1e.png', NULL, 0, '<p>tr tr trt rtr tr tr tr tr tr tr tr&nbsp;tr tr trt rtr tr tr tr tr tr tr tr&nbsp;tr tr trt rtr tr tr tr tr tr tr tr</p>', 'en en en en en en', '62253377492df.png', 'en en en en en enen en en en en en', NULL, '1'),
+(54, NULL, '2022-03-06 20:51:20', 'en en en en en en', 'en-en-en-en-en-en', '62253377492df.png', NULL, 1, '<p>en en en en en en&nbsp;en en en en en en&nbsp;en en en en en en&nbsp;en en en en en en&nbsp;en en en en en en</p>', 'tr tr trt rtr tr tr tr tr tr tr tr', '622533618bd1e.png', 'tr tr trt rtr tr tr tr tr tr tr tr', NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -153,17 +156,14 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `created_at`, `updated_at`, `settings_description`, `settings_category`, `key_category`, `category_id`, `settings_key`, `settings_value`, `settings_type`, `settings_must`, `settings_delete`, `settings_status`) VALUES
-(1, NULL, '2021-09-22 03:56:17', 'başlık', 'Site', 'title_category', 1, 'title', 'Hoş Geldinizzzzz', 'text', 0, '0', '1'),
-(2, NULL, '2021-09-22 03:56:11', 'Açıklama', 'Site', 'description__category', 1, 'description', 'Laravel ECMS Learning descriptionsadasd', 'text', 2, '0', '1'),
-(3, NULL, '2021-09-22 03:56:11', 'Logo', 'Site', 'logo_category', 1, 'logo', '614ad2d6d1c95.png', 'file', 3, '0', '1'),
-(4, NULL, '2021-09-22 03:56:11', 'icon', 'Site', 'icon_category', 1, 'icon', '6131df9b6e3f6.png', 'file', 4, '0', '1'),
-(5, NULL, '2021-09-22 03:56:11', 'Anahtar Kelimeler', 'Site', 'keywords_category', 1, 'keywords', 'Laravel,ECMS ,Seyit Erdemir', 'text', 5, '0', '1'),
-(8, NULL, '2021-09-22 03:54:07', 'Mail ', 'İletişim', 'mail_category', 2, 'mail', 'seyiterdemir4242@gmail.com', 'text', 0, '0', '1'),
-(25, NULL, '2021-09-22 03:56:17', 'Footer Bilgi ', 'Site', 'footer_category', 1, 'footer', 'seyiterdemir', 'text', 1, '1', '1'),
-(26, NULL, '2021-09-22 03:54:07', 'İnstragram Adresi', 'Sosyal', 'instagram_category', 3, 'instagram', 'xxxx asdas das d', 'text', 2, '0', '1'),
-(29, NULL, '2021-09-22 03:53:56', 'Facebook Adresi', 'Sosyal', 'facebook_category', 3, 'facebook', 'seyit', 'text', 3, '0', '1'),
-(40, NULL, '2021-09-22 03:54:07', ' Adresi', 'İletişim', 'address_category', 2, 'address', 'seyit', 'text', 1, '0', '1'),
-(77, NULL, '2021-09-22 03:54:07', 'Deneme Editör', 'İletişim', 'editor_category', 2, 'editor', '<p>asda&nbsp; sdasda&nbsp; &nbsp;sdasdasd</p>', 'ckeditor', 2, '1', '0');
+(86, NULL, '2022-02-27 16:35:58', 'Panel Logo', 'Panel', 'panel_logo_category', 1, 'panel_logo', '621bd29eac09d.png', 'file', 0, '1', '0'),
+(87, NULL, '2022-02-27 09:03:13', 'Site Logo', 'Site', 'logo_category', 2, 'logo', NULL, 'file', 0, '1', '0'),
+(89, NULL, '2022-02-27 16:35:58', 'Panel Footer', 'Panel', 'panel_footer_category', 1, 'panel_footer', 'WebDesign', 'text', 1, '1', '0'),
+(90, NULL, '2022-02-27 16:35:58', 'Panel Title', 'Panel', 'panel_title_category', 1, 'panel_title', 'Merhaba Panelime Hoşgeldiniz', 'text', NULL, '1', '0'),
+(91, NULL, '2022-02-27 16:35:58', 'Panel  Description', 'Panel', 'panel_description_category', 1, 'panel_description', 'Php-Laravel CMS Panel', 'text', NULL, '1', '0'),
+(92, NULL, '2022-02-27 16:35:58', 'Panel Favicon', 'Panel', 'panel_favicon_category', 1, 'panel_favicon', '621bd178938b1.png', 'file', NULL, '1', '0'),
+(93, NULL, NULL, 'Description', 'Site', 'description_category', 2, 'description', NULL, 'text', NULL, '1', '0'),
+(94, NULL, NULL, 'Footer', 'Site', 'footer_category', 2, 'footer', NULL, 'text', NULL, '1', '0');
 
 -- --------------------------------------------------------
 
@@ -216,8 +216,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_file`, `role`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `user_status`) VALUES
-(5, '615c617d40bbf.png', 'admin', 'Seyit', 'seyiterdemir4242@gmail.com', NULL, '$2y$10$xbNr0ULHqh6uZ5WqXGuaCeO7mJ0FaiNAzedNFGnTeInV3qraKTSNG', '1IZyJ31vUddgNDa0i6jt0Jo2wD3NAHI9Hh91Bgv6Gdc9Ha4U6D3px6lJTows', NULL, '2021-10-05 11:30:21', '1'),
-(6, '60ed478a64895.jpg', 'admin', 'demo', 'demo.demo@gmail.com', NULL, '$2y$10$HiioCr8rdqM3WayE6Nw8F.solrcfPrUC9xa8g8/g7001sLluJgvKe', NULL, NULL, NULL, '1');
+(5, '615c617d40bbf.png', 'admin', 'Seyittttt', 'seyiterdemir4242@gmail.com', NULL, '$2y$10$xbNr0ULHqh6uZ5WqXGuaCeO7mJ0FaiNAzedNFGnTeInV3qraKTSNG', 'RVeDME7dRbXZBEPvaMHF6Z7rpQWfNmat66HePwIwBj0R0E6sLYqcM4FHkuqO', NULL, '2022-02-23 11:58:54', '1'),
+(10, '622808aa801f4.png', 'admin', 'seyitttttttttt', 'seyit@gmail.com', NULL, '$2y$10$SJIneLaaVX2x9PmFT76LiezLrTxsga8yMMLiEkfhLLzsesJhGr4eu', NULL, NULL, NULL, '1');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -281,7 +281,7 @@ ALTER TABLE `users`
 -- Tablo için AUTO_INCREMENT değeri `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `failed_jobs`
@@ -305,7 +305,7 @@ ALTER TABLE `pages`
 -- Tablo için AUTO_INCREMENT değeri `settings`
 --
 ALTER TABLE `settings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `sliders`
@@ -317,7 +317,7 @@ ALTER TABLE `sliders`
 -- Tablo için AUTO_INCREMENT değeri `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
